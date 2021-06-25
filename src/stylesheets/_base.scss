@@ -1,13 +1,16 @@
 
 
 //variables-color
-$dark-c:#2c3e50;
-$light-bg-c:#ececec;
-$transition: all .3s .5s;
+$dark-c: #2c3e50;
+$light-bg-c: #f5f5f5;
+$blue-c: #3d8fcb;
+$white-c: #FFF;
+$green-certified-c: #74c900;
 
 //variables-other
+$transition: all .3s .5s;
 
-//positioning
+//mixin-position
 @mixin reset-list {
   margin: 0;
   padding: 0;
@@ -19,10 +22,35 @@ $transition: all .3s .5s;
 	width: $w;
 }
 
-
-@mixin ab_center($t:50%,$l:$t,$x:-50%,$y:$x){
+@mixin ab-center($t:50%,$l:$t,$x:-50%,$y:$x){
   position: absolute;
   top: $t;
   left: $l;
   transform: translateX($x) translateY($y);
+}
+
+//mixin-style
+@mixin blue-solid-style {
+  display: flex;
+  height: 2.4em;
+  border-radius: 1.2em;
+  background-color: $blue-c;
+  border: 2px solid lighten($blue-c, 20%);
+  padding: .2em .8em;
+  line-height: 2em;
+  color: #FFF;
+  font-size: 1em;
+}
+
+@mixin blue-outline-style {
+  @include blue-solid-style;
+  background-color: #FFF;
+  border: 2px solid $blue-c;
+  color: $blue-c;
+}
+
+//keyframe
+@keyframes ring {
+  0%   { width: 1em;  height: 1em;  opacity: 1; }
+  100% { width: 60px; height: 60px; opacity: 0; }
 }
