@@ -1,0 +1,28 @@
+
+
+//variables-color
+$dark-c:#2c3e50;
+$light-bg-c:#ececec;
+$transition: all .3s .5s;
+
+//variables-other
+
+//positioning
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin size($h,$w:$h){
+	height: $h;
+	width: $w;
+}
+
+
+@mixin ab_center($t:50%,$l:$t,$x:-50%,$y:$x){
+  position: absolute;
+  top: $t;
+  left: $l;
+  transform: translateX($x) translateY($y);
+}
