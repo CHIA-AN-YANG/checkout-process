@@ -73,9 +73,11 @@ export default {
   methods:{
     next(){
       if(this.checkoutProgress <= (this.length-1)){this.checkoutProgress++}
+      this.$emit('switchpage',this.checkoutProgress)
     },
     prev(){
-      if(this.checkoutProgress){this.checkoutProgress--}  
+      if(this.checkoutProgress){this.checkoutProgress--}
+      this.$emit('switchpage',this.checkoutProgress)
     },
   }
 }

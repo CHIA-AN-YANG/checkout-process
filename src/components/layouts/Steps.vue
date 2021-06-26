@@ -1,53 +1,66 @@
 <template>
   <ul class="row step__row justify-content-center">
-    
     <li class="step__holder">
-      <div class="step__ball current">
+      <div class="step__ball" :class="statusClass(1)">
         <span class="step__inner" v-text="extractStep(1).id"></span>
       </div>
       <p v-text="extractStep(1).step"></p>
     </li>
+
     <li class="step__connection--holder">
       <div class="step__connection--line"></div>
     </li>
+
     <li class="step__holder">
-      <div class="step__ball on-hold">
+      <div class="step__ball" :class="statusClass(2)">
         <span class="step__inner" v-text="extractStep(2).id"></span>
       </div>
       <p v-text="extractStep(2).step"></p>      
     </li>
-    <li class="step__connection--holder">
-      <div class="step__connection--line"></div>
-    </li>
-    <li class="step__holder">
-      <div class="step__ball completed">
-        <span class="step__inner">2</span>
-      </div>        
-    </li>
   </ul>
 </template>
+
+
 <script>
+// const getStatus = function(a,b,arr){
+//   a = Number(a)
+//   b = Number(b)
+//   if(a < b){ return arr[0] }
+//   if(a == b){ return arr[1] }
+//   if(a > b){ return arr[2] }
+// }
 export default {
   name: "Steps",
   props: {
     stepsS: Array,
-    checkoutProgressS: Number
+    progress: Number
   },
   data(){
       return { 
         steps:this.stepsS,
         length:this.stepsS.length,
-        checkoutProgress:this.checkoutProgressS
+        stepClasses: ['completed', 'current', 'on-hold']
       }
   },
+  computed: {
+
+  },
   methods:{
-    extractStep(num){
+  extractStep(num){
       let stepObj
       stepObj = this.steps[num-1]
       return stepObj
-      }
+      },
+  statusClass(num1){
+    if(num1 > this.progress){return this.stepClasses[2]}
+    else if(num1 === this.progress){return this.stepClasses[1]}
+    else if(num1 < this.progress){return this.stepClasses[0]}
+  } 
   },
+
+
 };
+
 </script>
 
 <style scoped lang="scss">

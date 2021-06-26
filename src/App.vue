@@ -2,9 +2,14 @@
 <div class="wrapper__app">
   <Navbar/>
   <main class="checkout bg--lightgray main__wrapper">
-    <Steps :stepsS="steps" :checkoutProgressS="checkoutProgress"/>
+    <Steps :stepsS="steps" 
+           :progress="checkoutProgress"/>
+    <p>checkoutProgress: {{checkoutProgress}}</p>
     <div class="main__card ">
-      <CheckoutFrame :stepsCF="steps" :checkoutProgressCF="checkoutProgress"/>      
+      <CheckoutFrame 
+        :stepsCF="steps" 
+        :checkoutProgressCF="checkoutProgress"
+        @switchpage="changeProgress"/>      
     </div>    
   </main>
 </div>
@@ -44,6 +49,9 @@ export default {
          ],
       checkoutProgress: 1,
     }
+  },
+  methods: {
+    changeProgress(val){ this.checkoutProgress = val }
   }
 };
 </script>
