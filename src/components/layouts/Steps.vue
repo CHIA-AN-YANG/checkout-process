@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../stylesheets/base';
+@import '../../stylesheets/base';
 .step {
   &__row {
     height: 100px;
@@ -94,7 +94,7 @@ export default {
     }
     &.completed {
       &:after {
-        content: url("../assets/step-completed.svg");
+        content: url("../../assets/step-completed.svg");
         position: absolute;
         top: 0px;
         left:0px;

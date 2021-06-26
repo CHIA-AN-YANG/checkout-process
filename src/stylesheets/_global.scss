@@ -1,0 +1,47 @@
+@import './base';
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+//global
+h1,h2,p {
+  color: $dark-c;
+}
+p {
+  font-size: 1em;
+  padding-top: 0;
+}
+a,a:link,a:hover,a:visited,a:active {
+  text-decoration:none;
+  color: $dark-c;
+}
+ul,li {
+  list-style-type: none;
+}
+//reusable elements
+.btn{
+  position: relative;
+  overflow: hidden;
+  &:after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -75px;
+    @include size(155px, 50px);
+    background: #fff;
+    opacity: .4;
+    transform: rotate(35deg);
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 2;
+  }
+}
+.btn:hover {  
+  &:after {
+    left: 120%;
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
