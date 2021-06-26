@@ -2,9 +2,9 @@
 <div class="wrapper--temp">
   <Navbar/>
   <main class="checkout bg--lightgray main__wrapper">
-    <Steps :steps="steps" :checkoutProgress="checkoutProgress"/>
+    <Steps :stepsS="steps" :checkoutProgressS="checkoutProgress"/>
     <div class="main__card card card-body pt-2 pb-2">
-      <CheckoutFrame :steps="steps" :checkoutProgress="checkoutProgress"/>      
+      <CheckoutFrame :stepsCF="steps" :checkoutProgressCF="checkoutProgress"/>      
     </div>    
   </main>
   <img alt="Vue logo" src="./assets/logo.png">
@@ -72,7 +72,6 @@ ul,li {
   list-style-type: none;
 }
 //reusable elements
-
 .btn{
   position: relative;
   overflow: hidden;
@@ -95,9 +94,6 @@ ul,li {
     transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
   }
 }
-
-
-
 .main {
   &__wrapper {
     @include size(100vh, 100vw);
@@ -112,30 +108,7 @@ ul,li {
     &--innerspace {
       padding: 20px 100px;
     }
-    form {
-      .form-group {
-        text-align: left;
-        margin: 1em 0;
-      }
-      .form--btn-holder {
-        display: flex;
-        .btn--next,.btn--prev {         
-          margin-top: 1em;
-          >* { align-self: center; }
-          >svg { @include size(1.6em); }
-        }
-        .btn--prev {
-          @include blue-outline-style;
-          margin-right: auto;
-          >svg { margin-right: .2em; }
-        }
-        .btn--next {
-          @include blue-solid-style;
-          margin-left: auto;
-          >svg { margin-left: .2em; }
-        }
-      }   
-    }
+
   }
 }
 </style>

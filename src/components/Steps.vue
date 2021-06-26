@@ -3,18 +3,18 @@
     
     <li class="step__holder">
       <div class="step__ball current">
-        <span class="step__inner">1</span>
+        <span class="step__inner" v-text="extractStep(1).id"></span>
       </div>
-      <p>{{steps[0]}}</p>
+      <p v-text="extractStep(1).step"></p>
     </li>
     <li class="step__connection--holder">
       <div class="step__connection--line"></div>
     </li>
     <li class="step__holder">
       <div class="step__ball on-hold">
-        <span class="step__inner">2</span>
+        <span class="step__inner" v-text="extractStep(2).id"></span>
       </div>
-      <p>{{steps[1]}}</p>      
+      <p v-text="extractStep(2).step"></p>      
     </li>
     <li class="step__connection--holder">
       <div class="step__connection--line"></div>
@@ -30,18 +30,22 @@
 export default {
   name: "Steps",
   props: {
-    steps: Object,
-    checkoutProgress: Number
+    stepsS: Array,
+    checkoutProgressS: Number
   },
   data(){
       return { 
-        steps:this.steps,
-        length:this.steps.length,
-        checkoutProgress:this.checkoutProgress
+        steps:this.stepsS,
+        length:this.stepsS.length,
+        checkoutProgress:this.checkoutProgressS
       }
   },
-  computed:{
-
+  methods:{
+    extractStep(num){
+      let stepObj
+      stepObj = this.steps[num-1]
+      return stepObj
+      }
   },
 };
 </script>
