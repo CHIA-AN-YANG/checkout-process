@@ -1,46 +1,52 @@
 <template>
 <div class="wrapper--temp">
-  <nav class="nav__card">
-    <ul class="nav__lists row justify-content-end">
-      <li class="nav__list nav__list--ayuda">
-        <img src="./assets/navbar-icons/help-icon.svg" alt="help-icon-img">
-        <a href="#">AYUDA</a>        
-      </li>
-
-      <li class="nav__list nav__list--signin d">
-        <img src="./assets/navbar-icons/user-auth.svg" alt="user-auth-img">
-        <a href="#">SIGN IN</a>
-      </li>
-
-      <li class="nav__list nav__list--es">
-        <a href="#">ES</a>
-        <img src="./assets/navbar-icons/arrow-down.svg" alt="arrow-down-img">
-      </li>
-    </ul>
-  </nav>
-
+  <Navbar/>
   <main class="checkout bg--lightgray main__wrapper">
-      <Steps/>
+    <Steps :steps="steps" :checkoutProgress="checkoutProgress"/>
     <div class="main__card card card-body pt-2 pb-2">
-      <UserAuth/>
-
+      <CheckoutFrame :steps="steps" :checkoutProgress="checkoutProgress"/>      
     </div>    
   </main>
-
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </div>
 </template>
 
 <script>
-import UserAuth from "./components/UserAuth.vue";
-import Steps from "./components/Steps.vue";
+import CheckoutFrame from "@/components/CheckoutFrame.vue";
+import Steps from "@/components/Steps.vue";
+import Navbar from "@/components/Navbar.vue";
 export default {
   name: "App",
   components: {
-    UserAuth,
-    Steps
+    CheckoutFrame,
+    Steps,
+    Navbar,
   },
+  data(){
+    return {
+      steps: [
+        {
+          id: 1,
+          step:"MIS DATOS",
+          heading:"Mis Datos",
+          text:"Reviso los datos y comleta aquelo pendientes antes de continuor con el proceso."
+        },
+        {
+          id: 2,
+          step:"PAGO",
+          heading:"Pago del Producto",
+          text:"una vez efectuado el pago del producto, recibras un email con las detalles de la compro"
+        },
+        {
+          id: 3,
+          step:"Enhorabuena",
+          heading:"",
+          text:"Se ha finalizada ya el preceso de compra can exita. Recibira un email can todos los detaillies. Gracias."
+        }
+         ],
+      checkoutProgress: 1,
+    }
+  }
 };
 </script>
 
@@ -66,24 +72,7 @@ ul,li {
   list-style-type: none;
 }
 //reusable elements
-.nav {
-  &__lists{
-    height: 50px;
-    margin-bottom: 0;
-  }
-  &__list {
-    flex-flow: row nowrap;
-    flex: 0 1 150px;
-    width: 150px;
-    cursor: pointer;
-    >a {
-      display: inline-block;
-      line-height: 40px;
-      padding: 5px 1rem;
-      color: inherit;
-    }    
-  }  
-}
+
 .btn{
   position: relative;
   overflow: hidden;
@@ -106,92 +95,7 @@ ul,li {
     transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
   }
 }
-.step {
-  &__row {
-    height: 100px;
-    padding: 1.5em 0;
-    align-items: flex-start;
-  }
-  &__holder {
-    position: relative;
-    text-transform: uppercase;
-    width: 2.4em;
-    overflow: visible;
-    text-align: center;
-    p {
-      display: inline-block;
-      position:absolute;
-      top: 2.4em;
-      left:1.2em;
-      font-size: 1em;
-      font-weight: 600;
-      transform: translateX(-50%);
-      text-align: left;
-      white-space: nowrap;
-    }
-  }
-  &__ball {
-    position: relative;
-    @include size(2.4em);
-    flex: 0 0 2.4em;
-    border-radius: 1em;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-self: start;
-    perspective: 1000px;
-    &.current {
-      @include blue-solid-style;
-    }
-    &.on-hold {
-      @include blue-outline-style;
-    }
-    &.completed {
-      &:after {
-        content: url("./assets/step-completed.svg");
-        position: absolute;
-        top: 0px;
-        left:0px;
-        @include size(2.3em);
-        border-radius: 1.15em;
-        background-color: $white-c;
-        transition: $transition;
-        z-index: 10;
-      }
-      &:before{
-        content: '';
-        @include ab-center;
-        width: 1em; height: 1em;
-        border-radius: 100%;
-        border: 2px solid $blue-c;
-        z-index: 5;
-        animation: ring 1s both;
-      }
-    }
-  }
-  &__inner {
-    font-size: 1em;
-    align-self: center;
-  }
-  &__connection {
-    &--holder{
-      display: flex;
-      flex: 0 1 60px;
-      height: 2.4em;
-      align-self: start;
-      align-items: center;
-      margin: 0 .5em;   
-    }
-    &--line {
-      @include size(0,100%);
-      flex: 0 0 100%;
-      border: 1px solid lightslategray;
-      box-sizing: content-box;
-      border-radius: 0.5px;   
-    }
 
-  }
-}
 
 
 .main {
@@ -215,19 +119,21 @@ ul,li {
       }
       .form--btn-holder {
         display: flex;
+        .btn--next,.btn--prev {         
+          margin-top: 1em;
+          >* { align-self: center; }
+          >svg { @include size(1.6em); }
+        }
+        .btn--prev {
+          @include blue-outline-style;
+          margin-right: auto;
+          >svg { margin-right: .2em; }
+        }
         .btn--next {
           @include blue-solid-style;
-          margin-top: 1em;
           margin-left: auto;
-          >* {
-            align-self: center;
-          }
-          >svg {
-            height: 1.6em;
-            width: 1.6em;
-            margin-left: 0.2em;
-          }
-        } 
+          >svg { margin-left: .2em; }
+        }
       }   
     }
   }
