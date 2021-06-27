@@ -4,7 +4,6 @@
   <main class="checkout bg--lightgray main__wrapper">
     <Steps :stepsS="steps" 
            :progress="checkoutProgress"/>
-    <p>checkoutProgress: {{checkoutProgress}}</p>
     <div class="main__card ">
       <CheckoutFrame 
         :stepsCF="steps" 
@@ -42,8 +41,8 @@ export default {
         {
           id: 3,
           step:"",
-          heading:"Enhorabuena",
-          text:"Se ha finalizada ya el preceso de compra can exita. Recibira un email can todos los detaillies. Gracias.",
+          heading:"",
+          text:"",
           class:"small-content"
         }
          ],
@@ -75,6 +74,7 @@ export default {
     background-color: $white-c;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    overflow:scroll; //test only
     &--innerspace {
       position: relative;
       display: flex;
@@ -82,7 +82,8 @@ export default {
       margin: 0 auto;
       align-items: center;
       height: 100%;
-      width: 500px;
+      // width: 500px;
+      width: 800px;
     }
   }
 }

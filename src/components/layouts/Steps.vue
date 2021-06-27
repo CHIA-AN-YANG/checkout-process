@@ -22,13 +22,6 @@
 
 
 <script>
-// const getStatus = function(a,b,arr){
-//   a = Number(a)
-//   b = Number(b)
-//   if(a < b){ return arr[0] }
-//   if(a == b){ return arr[1] }
-//   if(a > b){ return arr[2] }
-// }
 export default {
   name: "Steps",
   props: {
@@ -36,14 +29,11 @@ export default {
     progress: Number
   },
   data(){
-      return { 
-        steps:this.stepsS,
-        length:this.stepsS.length,
-        stepClasses: ['completed', 'current', 'on-hold']
-      }
-  },
-  computed: {
-
+    return { 
+      steps:this.stepsS,
+      length:this.stepsS.length,
+      stepClasses: ['completed', 'current', 'on-hold']
+    }
   },
   methods:{
   extractStep(num){
@@ -51,10 +41,10 @@ export default {
       stepObj = this.steps[num-1]
       return stepObj
       },
-  statusClass(num1){
-    if(num1 > this.progress){return this.stepClasses[2]}
-    else if(num1 === this.progress){return this.stepClasses[1]}
-    else if(num1 < this.progress){return this.stepClasses[0]}
+  statusClass(num){
+    if(num < this.progress){   return this.stepClasses[0] }
+    if(num === this.progress){ return this.stepClasses[1] }
+    if(num > this.progress){   return this.stepClasses[2] }
   } 
   },
 

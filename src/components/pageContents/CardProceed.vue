@@ -11,7 +11,9 @@
 </template>
 
 <script>
-export default { name: "CardProceed" };
+export default { 
+  name: "CardProceed"
+ };
 </script>
 
 <style lang="scss" scoped>

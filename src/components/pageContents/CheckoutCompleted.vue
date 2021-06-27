@@ -1,7 +1,11 @@
 <template>
+  <div>
     <div class="centeral-img__holder">
       <img class="central-img" src="@/assets/Certificate.svg" alt="certificate picture">
     </div>
+    <h2 v-text="chooseHeading"></h2>
+    <p v-text="chooseText"></p>
+  </div>
 </template>
 
 <script>
