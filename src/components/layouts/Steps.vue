@@ -1,21 +1,21 @@
 <template>
   <ul class="row step__row justify-content-center">
     <li class="step__holder">
-      <div class="step__ball" :class="statusClass(1)">
-        <span class="step__inner" v-text="extractStep(1).id"></span>
+      <div class="step__ball" :class="getStepClass(1)">
+        <span class="step__inner" v-text="getStep(1).id"></span>
       </div>
-      <p v-text="extractStep(1).step"></p>
+      <p v-text="getStep(1).step"></p>
     </li>
 
-    <li class="step__connection--holder">
+    <li class="step__connection--holder" v-if="idx!==1">
       <div class="step__connection--line"></div>
     </li>
 
     <li class="step__holder">
-      <div class="step__ball" :class="statusClass(2)">
-        <span class="step__inner" v-text="extractStep(2).id"></span>
+      <div class="step__ball" :class="getStepClass(2)">
+        <span class="step__inner" v-text="getStep(2).id"></span>
       </div>
-      <p v-text="extractStep(2).step"></p>      
+      <p v-text="getStep(2).step"></p>      
     </li>
   </ul>
 </template>
@@ -25,32 +25,24 @@
 export default {
   name: "Steps",
   props: {
-    stepsS: Array,
+    steps: Array,
     progress: Number
   },
   data(){
     return { 
-      steps:this.stepsS,
-      length:this.stepsS.length,
-      stepClasses: ['completed', 'current', 'on-hold']
+      length: this.steps.length,
+      stepClasses: ['on-hold', 'current', 'completed']
     }
   },
   methods:{
-  extractStep(num){
-      let stepObj
-      stepObj = this.steps[num-1]
-      return stepObj
-      },
-  statusClass(num){
-    if(num < this.progress){   return this.stepClasses[0] }
-    if(num === this.progress){ return this.stepClasses[1] }
-    if(num > this.progress){   return this.stepClasses[2] }
+  getStep(num){ return this.steps[num-1] },
+  getStepClass(num){
+    if(num > this.progress+1){   return this.stepClasses[2] }
+    if(num === this.progress+1){ return this.stepClasses[1] }
+    if(num < this.progress+1){   return this.stepClasses[0] }
   } 
   },
-
-
 };
-
 </script>
 
 <style scoped lang="scss">

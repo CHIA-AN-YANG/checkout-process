@@ -2,23 +2,27 @@
     <form action="" method="POST">
       <div class="form-group">
         <label for="name">Nombre</label>
-        <input 
+        <input
+          @keydown="checkValid"
           class="form-control" 
           type="text" 
           name="firstname" 
           id="firstname" 
           pattern="/^[A-Z ,.'-]+$/i"
+          minlength="2"
           v-model="firstname"
           required>          
       </div>
       <div class="form-group">
         <label for="surname">Apelido</label>
-        <input 
+        <input
+          @keydown="checkValid" 
           class="form-control" 
           type="text" 
           name="surname" 
           id="surname" 
           pattern="/^[A-Z ,.'-]+$/i"
+          minlength="2"
           v-model="lastname"
           required>          
       </div>
@@ -26,23 +30,36 @@
 </template>
 
 <script>
-import store from '@/store'
 export default {
-  name: "UserAuth",
+  name: "NameInput",
   data(){
     return {
       firstname: '',
       lastname: '',
-      auth:false
+      errorArr: []
     }
   },
   methods: {
-    login(){
-      if(store.userB.firstname === this.firstname && store.userB.firstname === this.firstname){
-        this.auth = true
-        this.$router.push(`user/${store.userB.id}/payment`)
+    checkValid(){
+      let nameRegex = /^[A-Z ,.'-]+$/i
+      const a = nameRegex.test(this.firstname)
+      const b = nameRegex.test(this.firstname)
+      this.errorArr=[]
+
+      if(!this.firstname || !this.lastname){
+        this.errorArr.push('All slots are required.')
+        }
+
+      if(this.firstname.length<3 || this.lastname.length<3){
+        this.errorArr.push('Name too short.')
+      }else if(!a || !b){this.errorArr.push('Contain invalid characters')}
+      
+      if(this.errorArr.length){
+        this.$emit('validate', false, this.errorArr)
         return
         }
+      this.$emit('validate',true, this.errorArr)
+      return      
     }
   }
 };

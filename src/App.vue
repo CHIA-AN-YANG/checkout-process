@@ -2,12 +2,12 @@
 <div class="wrapper__app">
   <Navbar/>
   <main class="checkout bg--lightgray main__wrapper">
-    <Steps :stepsS="steps" 
+    <Steps :steps="steps" 
            :progress="checkoutProgress"/>
     <div class="main__card ">
       <CheckoutFrame 
-        :stepsCF="steps" 
-        :checkoutProgressCF="checkoutProgress"
+        :steps="steps" 
+        :progress="checkoutProgress"
         @switchpage="changeProgress"/>      
     </div>    
   </main>
@@ -46,7 +46,7 @@ export default {
           class:"small-content"
         }
          ],
-      checkoutProgress: 1,
+      checkoutProgress: 0,
     }
   },
   methods: {
@@ -74,7 +74,6 @@ export default {
     background-color: $white-c;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    overflow:scroll; //test only
     &--innerspace {
       position: relative;
       display: flex;
@@ -82,8 +81,7 @@ export default {
       margin: 0 auto;
       align-items: center;
       height: 100%;
-      // width: 500px;
-      width: 800px;
+      width: 500px;
     }
   }
 }

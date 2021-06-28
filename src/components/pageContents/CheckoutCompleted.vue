@@ -3,13 +3,16 @@
     <div class="centeral-img__holder">
       <img class="central-img" src="@/assets/Certificate.svg" alt="certificate picture">
     </div>
-    <h2 v-text="chooseHeading"></h2>
-    <p v-text="chooseText"></p>
+    <h2></h2>
+    <p></p>
   </div>
 </template>
 
 <script>
-export default { name: "CheckoutCompleted" };
+export default { 
+  name: "CheckoutCompleted",
+  props: ['fetchedData']
+  };
 </script>
 
 <style lang="scss" scoped>

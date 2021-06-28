@@ -10,34 +10,27 @@ const router = new Router({
   mode: 'history',
   routes:[
     { 
-      path: '/user', 
-      name: 'UserAuth', 
-      component: () => 
-        import('../components/pageContents/UserAuth.vue') 
-    },
-    { 
-      path: '/user/:id/payment', 
+      path: '/checkout/payment', 
       name: 'CardProceed', 
       component: () => 
         import('../components/pageContents/CardProceed.vue'),
-      meta: {requiresAuth:true}
     },
     { 
-      path: '/user/:id/completed', 
+      path: '/checkout/completed', 
       name: 'CheckoutCompleted', 
       component: () => 
-        import('../components/pageContents/CardProceed.vue')
-         
+        import('../components/pageContents/CheckoutCompleted.vue')         
     },
-    { path: '/', redirect: '/user' },
+    { 
+      path: '/checkout/name', 
+      name: 'NameInput', 
+      component: () => 
+        import('../components/pageContents/NameInput.vue') 
+    },
+    { path: '/', redirect: { name: 'NameInput' } },
     { path: '*', name: 'ErrorPage', component: ErrorPage}
     ]
 })
 
-router.beforeEach((to, from, next) => {
-  if(to.meta.requiresAuth){
-    if(!this.auth){ next({name:'UserAuth'}) }
-  }else{next()}
-  })
 
 export default router
