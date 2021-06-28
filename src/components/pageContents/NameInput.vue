@@ -1,5 +1,5 @@
 <template>
-    <form action="" method="POST">
+    <form action="/name" method="POST">
       <div class="form-group">
         <label for="name">Nombre</label>
         <input
@@ -8,7 +8,7 @@
           type="text" 
           name="firstname" 
           id="firstname" 
-          pattern="/^[A-Z ,.'-]+$/i"
+          pattern="/^[A-Z ,'-]+$/i"
           minlength="2"
           v-model="firstname"
           required>          
@@ -19,9 +19,9 @@
           @keydown="checkValid" 
           class="form-control" 
           type="text" 
-          name="surname" 
-          id="surname" 
-          pattern="/^[A-Z ,.'-]+$/i"
+          name="lastname" 
+          id="lastname" 
+          pattern="/^[A-Z ,'-]+$/i"
           minlength="2"
           v-model="lastname"
           required>          
@@ -41,24 +41,24 @@ export default {
   },
   methods: {
     checkValid(){
-      let nameRegex = /^[A-Z ,.'-]+$/i
-      const a = nameRegex.test(this.firstname)
-      const b = nameRegex.test(this.firstname)
+      let nameRegex = /^[A-Z ,'-]+$/i
+      const nameCheckA = nameRegex.test(this.firstname)
+      const nameCheckB = nameRegex.test(this.firstname)
       this.errorArr=[]
 
       if(!this.firstname || !this.lastname){
-        this.errorArr.push('All slots are required.')
+        this.errorArr.push('All slots are required with valid characters only.')
         }
 
-      if(this.firstname.length<3 || this.lastname.length<3){
+      if(this.firstname.length<2 || this.lastname.length<2){
         this.errorArr.push('Name too short.')
-      }else if(!a || !b){this.errorArr.push('Contain invalid characters')}
+      }else if(!nameCheckA || !nameCheckB){this.errorArr.push('Contain invalid characters.')}
       
       if(this.errorArr.length){
         this.$emit('validate', false, this.errorArr)
         return
         }
-      this.$emit('validate',true, this.errorArr)
+      this.$emit('validate',true , this.errorArr)
       return      
     }
   }

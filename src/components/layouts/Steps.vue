@@ -7,7 +7,7 @@
       <p v-text="getStep(1).step"></p>
     </li>
 
-    <li class="step__connection--holder" v-if="idx!==1">
+    <li class="step__connection--holder">
       <div class="step__connection--line"></div>
     </li>
 
@@ -26,7 +26,7 @@ export default {
   name: "Steps",
   props: {
     steps: Array,
-    progress: Number
+    progressB: Number
   },
   data(){
     return { 
@@ -37,9 +37,9 @@ export default {
   methods:{
   getStep(num){ return this.steps[num-1] },
   getStepClass(num){
-    if(num > this.progress+1){   return this.stepClasses[2] }
-    if(num === this.progress+1){ return this.stepClasses[1] }
-    if(num < this.progress+1){   return this.stepClasses[0] }
+    if(num > this.progressB+1){   return this.stepClasses[0] }
+    if(num === this.progressB+1){ return this.stepClasses[1] }
+    if(num < this.progressB+1){   return this.stepClasses[2] }
   } 
   },
 };

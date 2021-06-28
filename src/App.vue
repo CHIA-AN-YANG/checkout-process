@@ -3,12 +3,14 @@
   <Navbar/>
   <main class="checkout bg--lightgray main__wrapper">
     <Steps :steps="steps" 
-           :progress="checkoutProgress"/>
+           :progressB="checkoutProgress"/>
     <div class="main__card ">
       <CheckoutFrame 
         :steps="steps" 
-        :progress="checkoutProgress"
-        @switchpage="changeProgress"/>      
+        :progressA="checkoutProgress"
+        @switchpage="changeProgress"
+        @fetchMsg="updatePageInfo"
+        />      
     </div>    
   </main>
 </div>
@@ -16,8 +18,8 @@
 
 <script>
 import CheckoutFrame from "@/components/layouts/CheckoutFrame.vue";
-import Steps from "@/components/layouts/Steps.vue";
-import Navbar from "@/components/layouts/Navbar.vue";
+import Steps from         "@/components/layouts/Steps.vue";
+import Navbar from        "@/components/layouts/Navbar.vue";
 export default {
   name: "App",
   components: { CheckoutFrame, Steps, Navbar, },
@@ -43,14 +45,20 @@ export default {
           step:"",
           heading:"",
           text:"",
-          class:"small-content"
+          class:"small-content",
+          image: ""
         }
          ],
       checkoutProgress: 0,
     }
   },
   methods: {
-    changeProgress(val){ this.checkoutProgress = val }
+    changeProgress(val){ this.checkoutProgress = val },
+    updatePageInfo(val){
+      this.steps[2].heading = val.title
+      this.steps[2].text = val.text
+      this.steps[2].image = val.img  
+    }
   }
 };
 </script>

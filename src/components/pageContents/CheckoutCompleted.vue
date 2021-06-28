@@ -1,18 +1,24 @@
 <template>
   <div>
-    <div class="centeral-img__holder">
-      <img class="central-img" src="@/assets/Certificate.svg" alt="certificate picture">
+    <div id="diploma" class="centeral-img__holder">
+      <img class="central-img" :src="getImg(fetchedData.image)" v-if="fetchedData.image" alt="diploma picture">
     </div>
-    <h2></h2>
-    <p></p>
+    <h2>{{fetchedData.heading}}</h2>
+    <p>{{fetchedData.text}}</p>
+    <p>{{fetchedData.image}}</p>
   </div>
 </template>
 
 <script>
 export default { 
   name: "CheckoutCompleted",
-  props: ['fetchedData']
-  };
+  props: { fetchedData: Object },
+  computed: {
+    getImg(path){
+      return require(`../../assets/central-img/${path}`)
+    }
+  }
+  }
 </script>
 
 <style lang="scss" scoped>

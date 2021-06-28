@@ -14,6 +14,7 @@ const router = new Router({
       name: 'CardProceed', 
       component: () => 
         import('../components/pageContents/CardProceed.vue'),
+        meta: { requiresAuth: true }
     },
     { 
       path: '/checkout/completed', 
