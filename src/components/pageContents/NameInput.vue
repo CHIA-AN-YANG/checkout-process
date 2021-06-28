@@ -1,5 +1,5 @@
 <template>
-    <form action="/name" method="POST">
+    <form id="name-form" action="/name" method="POST">
       <div class="form-group">
         <label for="name">Nombre</label>
         <input
@@ -14,7 +14,7 @@
           required>          
       </div>
       <div class="form-group">
-        <label for="surname">Apelido</label>
+        <label for="lastname">Apelido</label>
         <input
           @keydown="checkValid" 
           class="form-control" 
