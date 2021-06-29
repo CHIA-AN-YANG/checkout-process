@@ -1,8 +1,12 @@
 # checkout-process
 A mock that showcase a checkout process.
 
+export NODE_ENV=production
 ### Setup Environmental Variables
 - Please refer to .env.example in root folder for reference.
+
+### Minify with Task Runner
+Since webpack comes with Vue-cli and does the minification, it does not require external task runners.
 
 ### Testing Data for Credit Card Payment:
 - Enter random values for name on card, email, and country

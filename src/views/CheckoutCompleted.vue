@@ -3,13 +3,12 @@
     <Steps :steps="steps" :pageId="stepC.id"/>
     <div class="main__card ">
       <div class="main__card--innerspace">
-    <!-- start main content -->
+        <!-- start main content -->
         <div id="diploma" class="central-img__holder">
           <img class="central-img" :src="imgsrc">
         </div>
         <h2>{{successInfo.title}}</h2>
         <p>{{successInfo.text}}</p>
-        <p>{{successInfo.img}}</p>
         <!-- end main content -->
         <PageBtns v-show="false"/>
       </div>  

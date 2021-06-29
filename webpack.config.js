@@ -1,11 +1,21 @@
 const { VueLoaderPlugin } = require('vue-loader')
-
+const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
   mode: 'development',
   resolve: {
     alias: {
         vue: 'vue/dist/vue.js'
     },
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [      
+      new TerserPlugin({
+        parallel: true,
+        extractComments: 'all',
+        terserOptions: { },
+      }),
+    ],
   },
   module: {
     rules: [

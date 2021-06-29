@@ -1,6 +1,8 @@
 <template>
 <main class="checkout bg--lightgray main__wrapper">
-    <Steps :steps="steps" :pageId="stepA.id"/>
+
+  <Steps :steps="steps" :pageId="stepA.id"/>
+
   <!-- start error message -->
   <div class="msg__card alert alert-danger alert-dismissible" role="alert" v-show="errorMsg.length">
       <span v-for="error in errorMsg" :key="error">{{"* "+error+" "}}</span>
@@ -9,42 +11,43 @@
     </button>      
   </div> 
   <!-- end error message -->  
-<div class="main__card ">
-  <div class="main__card--innerspace">
-<!-- start main content -->
-  <!-- use this when building back-end, then redirects to next page: -->
-  <!-- <form id="name-form" action="checkout/name" method="POST"> -->
-    <form id="name-form">
-      <h2 v-text="stepA.heading"></h2>
-      <p v-text="stepA.text"></p>
-      <div class="form-group">
-        <label for="name">Nombre</label>
-        <input
-          @keydown="checkValid"
-          class="form-control" 
-          type="text" 
-          name="firstname" 
-          id="firstname" 
-          pattern="/^[A-Z ,'-]+$/i"
-          minlength="3"
-          v-model="firstname"
-          required>          
-      </div>
-      <div class="form-group">
-        <label for="lastname">Apelido</label>
-        <input
-          @keydown="checkValid" 
-          class="form-control" 
-          type="text" 
-          name="lastname" 
-          id="lastname" 
-          pattern="/^[A-Z ,'-]+$/i"
-          minlength="3"
-          v-model="lastname"
-          required>          
-      </div>
-    </form>  
-    <!-- end main content -->
+
+  <div class="main__card ">
+    <div class="main__card--innerspace">
+    <!-- start main content -->
+    <!-- use this when building back-end, then redirects to next page: -->
+    <!-- <form id="name-form" action="checkout/name" method="POST"> -->
+      <form id="name-form">
+        <h2 v-text="stepA.heading"></h2>
+        <p v-text="stepA.text"></p>
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input
+            @keydown="checkValid"
+            class="form-control" 
+            type="text" 
+            name="firstname" 
+            id="firstname" 
+            pattern="/^[A-Z ,'-]+$/i"
+            minlength="3"
+            v-model="firstname"
+            required>          
+        </div>
+        <div class="form-group">
+          <label for="lastname">Apelido</label>
+          <input
+            @keydown="checkValid" 
+            class="form-control" 
+            type="text" 
+            name="lastname" 
+            id="lastname" 
+            pattern="/^[A-Z ,'-]+$/i"
+            minlength="3"
+            v-model="lastname"
+            required>          
+        </div>
+      </form>  
+      <!-- end main content -->
     <PageBtns :nextPage="nextPageA" :pageId="stepA.id" 
               :valid="valid" formName="name-form"/>
   </div>  
@@ -62,16 +65,12 @@ export default {
     stepA: Object,
     nextPageA: String 
   },
-  components: {
-    Steps,
-    PageBtns
-  },
+  components: { Steps, PageBtns },
   data(){
     return {
       pageId: this.stepA.id,
       firstname: '',
       lastname: '',
-      errorArr: [],
       errorMsg: [],
       valid: false
     }
@@ -80,15 +79,15 @@ export default {
     checkValid(){
       let nameRegex = /^[A-Z ,'-]+$/i
       const nameCheckA = nameRegex.test(this.firstname)
-      const nameCheckB = nameRegex.test(this.firstname)
+      const nameCheckB = nameRegex.test(this.lastname)
       this.errorMsg=[]
 
       if(!this.firstname || !this.lastname){
         this.errorMsg.push('All slots are required with valid characters only.')
         }
 
-      if(this.firstname.length<3 || this.lastname.length<3){
-        this.errorArr.push('Name too short.')
+      if(this.firstname.trim().length<3 || this.lastname.trim().length<3){
+        this.errorMsg.push('Name too short.')
       }else if(!nameCheckA || !nameCheckB){this.errorMsg.push('Contain invalid characters.')}
       
       if(this.errorMsg.length){

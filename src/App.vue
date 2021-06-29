@@ -1,7 +1,6 @@
 <template>
 <div class="wrapper__app">
   <Navbar/>
-
   <!-- start main page content -->
   <!-- 2nd line: NameInput | 3rd, 4th: Cardproceed | 5th, 6th: CheckoutCompleted -->
   <router-view :to="{ name: 'NameInput' }" :steps="steps"
