@@ -93,7 +93,5 @@ export default {
   text-align: left;
   opacity: .9;
 };
-.big-content{ padding-top: 2vh; }
-.mid-content{ padding-top: 9vh; }
-.small-content{ padding-top: 18vh; }
+
 </style>

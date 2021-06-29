@@ -26,7 +26,7 @@
           name="firstname" 
           id="firstname" 
           pattern="/^[A-Z ,'-]+$/i"
-          minlength="2"
+          minlength="3"
           v-model="firstname"
           required>          
       </div>
@@ -39,7 +39,7 @@
           name="lastname" 
           id="lastname" 
           pattern="/^[A-Z ,'-]+$/i"
-          minlength="2"
+          minlength="3"
           v-model="lastname"
           required>          
       </div>

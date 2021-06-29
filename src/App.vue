@@ -3,12 +3,13 @@
   <Navbar/>
 
   <!-- start main page content -->
-  <!-- 2nd line: NameInput | 3rd, 4th: Cardproceed | 5th line: CheckoutCompleted -->
+  <!-- 2nd line: NameInput | 3rd, 4th: Cardproceed | 5th, 6th: CheckoutCompleted -->
   <router-view :to="{ name: 'NameInput' }" :steps="steps"
   :stepA="steps[0]" :nextPageA="steps[1].name"          
   :stepB="steps[1]" :nextPageB="steps[2].name" 
-  :prevPageB="steps[0].name" @fetchMsg="updatePageInfo" 
-  :stepC="steps[2]" :prevPageC="steps[1].name"/> 
+  :prevPageB="steps[0].name" 
+  :stepC="steps[2]" :successInfo="successInfo" 
+  :prevPageC="steps[1].name"/> 
   <!-- start main page content -->    
 </div>
 </template>
@@ -27,7 +28,6 @@ export default {
           name: 'NameInput',
           heading:"Mis Datos",
           text:"Reviso los datos y comleta aquelo pendientes antes de continuor con el proceso.",
-          image: ""
         },
         {
           id: 2,
@@ -35,30 +35,20 @@ export default {
           name: 'CardProceed',
           heading:"Pago del Producto",
           text:"una vez efectuado el pago del producto, recibras un email con las detalles de la compro",
-          class:"big-content",
-          image: ""
         },
-        {
+        { //will get updated by the API data
           id: 3,
-          step:"",
+          step:"", 
           heading:"",
           name:"CheckoutCompleted",
           text:"",
-          class:"small-content",
-          image: ""
         }
-         ],
-      currentPage: 0,
-      errorMsg: []
-    }
+      ],
+      successInfo: { title: '', text: '', img: '' }
+    } 
   },
   methods: {
     changeProgress(val){ this.currentPage = val },
-    updatePageInfo(val){
-      this.steps[2].heading = val.title
-      this.steps[2].text = val.text
-      this.steps[2].image = val.img  
-    },
   }
 };
 </script>

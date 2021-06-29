@@ -34,8 +34,8 @@
 </template>
 
 <script>
-import { StripeCheckout } from '@vue-stripe/vue-stripe';
 import axios from 'axios'
+import { StripeCheckout } from '@vue-stripe/vue-stripe';
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
@@ -52,16 +52,7 @@ export default {
   components: {
     Steps, PageBtns, StripeCheckout
   },
-  async onBeforeUnmount(){
-  await axios.get("http://www.mocky.io/v2/5e3d41272d00003f7ed95c09")
-    .then(res => { this.$emit('fetchMsg', res.data) })
-    .catch(error => {
-      console.error("Payment Authentification Failed", error)
-      alert(`Payment Authentification Failed.`) })
-    .finally(() => this.loading = false)
-    },
-  data () { 
-    
+  data () {     
     return {
       pageId: this.stepB.id,
       lineItems: [{
@@ -75,12 +66,20 @@ export default {
     };
   },
   methods: {
-    updatePageInfo(val){
-      this.$emit('fetchMsg', val)
-    },
     submit () {
       // Redirected to Stripe's secure checkout page
-      this.$refs.checkoutRef.redirectToCheckout();
+      axios.get("http://www.mocky.io/v2/5e3d41272d00003f7ed95c09")
+        .then(res => { 
+          localStorage.setItem('title', res.data.title )
+          localStorage.setItem('text', res.data.text )
+          localStorage.setItem('img', res.data.img );
+          return this.$emit('fetchMsg', res.data)           
+        })
+        .then(() => this.$refs.checkoutRef.redirectToCheckout())
+        .catch(error => {
+          console.error("Payment Authentification Failed", error)
+          alert(`Payment Authentification Failed.`) })
+        .finally(() => this.loading = false)      
     },
   }
  };

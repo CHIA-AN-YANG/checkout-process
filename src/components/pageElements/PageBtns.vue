@@ -61,7 +61,9 @@ methods: {
   getNextRoute(){
     if(this.valid){
       if(this.pageId===2){ this.$emit('checkout')}
-      this.$router.push({name:this.nextPage})
+      if(this.pageId!==2){
+        this.$router.push({name:this.nextPage})        
+      }
     }
     return
   },
