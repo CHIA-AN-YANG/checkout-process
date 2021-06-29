@@ -20,6 +20,34 @@ a,a:link,a:hover,a:visited,a:active {
 ul,li {
   list-style-type: none;
 }
+.main {
+  &__wrapper {
+    @include size(100vh, 100vw);
+    background-color: $light-bg-c;
+    padding-bottom: 150px;
+  }
+  &__card {
+    position: relative;
+    overflow: hidden;
+    max-width: 1000px;
+    height: 68vh;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 0;
+    background-color: $white-c;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    &--innerspace {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      align-items: center;
+      height: 100%;
+      width: 500px;
+    }
+  }
+}
 .btn{
   position: relative;
   overflow: hidden;

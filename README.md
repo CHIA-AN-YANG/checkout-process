@@ -1,4 +1,14 @@
 # checkout-process
+A mock that showcase a checkout process.
+
+### Setup Environmental Variables
+- Please refer to .env.example in root folder for reference.
+
+### Testing Data for Credit Card Payment:
+- Enter random values for name on card, email, and country
+- card number:      4242424242424242
+- cvc:              Random 3 digits
+- expiration date:  Any future date
 
 ## Project setup
 ```
@@ -24,6 +34,11 @@ npm run test:unit
 ```
 npm run lint
 ```
+### Version Information
+  vue: ^2.6.14,
+  vue-router: ^3.5.2
+  @vue-stripe/vue-stripe: ^4.2.5,
+  axios: ^0.21.1,
+  dotenv: ^10.0.0,
+  lodash: ^4.17.21,
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

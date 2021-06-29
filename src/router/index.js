@@ -13,20 +13,20 @@ const router = new Router({
       path: '/checkout/payment', 
       name: 'CardProceed', 
       component: () => 
-        import('../components/pageContents/CardProceed.vue'),
+        import('../views/CardProceed.vue'),
         meta: { requiresAuth: true }
     },
     { 
       path: '/checkout/completed', 
       name: 'CheckoutCompleted', 
       component: () => 
-        import('../components/pageContents/CheckoutCompleted.vue')         
+        import('../views/CheckoutCompleted.vue')         
     },
     { 
       path: '/checkout/name', 
       name: 'NameInput', 
       component: () => 
-        import('../components/pageContents/NameInput.vue') 
+        import('../views/NameInput.vue') 
     },
     { path: '/', redirect: { name: 'NameInput' } },
     { path: '*', name: 'ErrorPage', component: ErrorPage}

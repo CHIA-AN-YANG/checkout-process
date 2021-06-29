@@ -1,28 +1,28 @@
 <template>
   <div>
     <div id="diploma" class="centeral-img__holder">
-      <img class="central-img" :src="getImg(fetchedData.image)" v-if="fetchedData.image" alt="diploma picture">
+      <img class="central-img" :src="getImg(stepC.image)" v-if="stepC.image" alt="diploma picture">
     </div>
-    <h2>{{fetchedData.heading}}</h2>
-    <p>{{fetchedData.text}}</p>
-    <p>{{fetchedData.image}}</p>
+    <h2>{{stepC.heading}}</h2>
+    <p>{{stepC.text}}</p>
+    <p>{{stepC.image}}</p>
   </div>
 </template>
 
 <script>
 export default { 
   name: "CheckoutCompleted",
-  props: { fetchedData: Object },
+  props: { stepC: Object },
   computed: {
     getImg(path){
-      return require(`../../assets/central-img/${path}`)
+      return require(`../assets/central-img/${path}`)
     }
   }
   }
 </script>
 
 <style lang="scss" scoped>
-@import '../../stylesheets/global';
+@import '../stylesheets/global';
 .central-img__holder {
   border: none;
   box-shadow: none;

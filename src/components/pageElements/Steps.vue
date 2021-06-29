@@ -26,7 +26,7 @@ export default {
   name: "Steps",
   props: {
     steps: Array,
-    progressB: Number
+    pageId: Number
   },
   data(){
     return { 
@@ -37,9 +37,9 @@ export default {
   methods:{
   getStep(num){ return this.steps[num-1] },
   getStepClass(num){
-    if(num > this.progressB+1){   return this.stepClasses[0] }
-    if(num === this.progressB+1){ return this.stepClasses[1] }
-    if(num < this.progressB+1){   return this.stepClasses[2] }
+    if(num > this.pageId){   return this.stepClasses[0] }
+    if(num === this.pageId){ return this.stepClasses[1] }
+    if(num < this.pageId){   return this.stepClasses[2] }
   } 
   },
 };

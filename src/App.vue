@@ -1,96 +1,68 @@
 <template>
 <div class="wrapper__app">
   <Navbar/>
-  <main class="checkout bg--lightgray main__wrapper">
-    <Steps :steps="steps" 
-           :progressB="checkoutProgress"/>
-    <div class="main__card ">
-      <CheckoutFrame 
-        :steps="steps" 
-        :progressA="checkoutProgress"
-        @switchpage="changeProgress"
-        @fetchMsg="updatePageInfo"
-        />      
-    </div>    
-  </main>
+
+  <!-- start main page content -->
+  <!-- 2nd line: NameInput | 3rd, 4th: Cardproceed | 5th line: CheckoutCompleted -->
+  <router-view :to="{ name: 'NameInput' }" :steps="steps"
+  :stepA="steps[0]" :nextPageA="steps[1].name"          
+  :stepB="steps[1]" :nextPageB="steps[2].name" 
+  :prevPageB="steps[0].name" @fetchMsg="updatePageInfo" 
+  :stepC="steps[2]" :prevPageC="steps[1].name"/> 
+  <!-- start main page content -->    
 </div>
 </template>
 
 <script>
-import CheckoutFrame from "@/components/layouts/CheckoutFrame.vue";
-import Steps from         "@/components/layouts/Steps.vue";
-import Navbar from        "@/components/layouts/Navbar.vue";
+import Navbar from "@/components/layouts/Navbar.vue";
 export default {
   name: "App",
-  components: { CheckoutFrame, Steps, Navbar, },
+  components: { Navbar, },
   data(){
     return {
       steps: [
         {
           id: 1,
           step:"MIS DATOS",
+          name: 'NameInput',
           heading:"Mis Datos",
           text:"Reviso los datos y comleta aquelo pendientes antes de continuor con el proceso.",
-          class:"mid-content"
+          image: ""
         },
         {
           id: 2,
           step:"PAGO",
+          name: 'CardProceed',
           heading:"Pago del Producto",
           text:"una vez efectuado el pago del producto, recibras un email con las detalles de la compro",
-          class:"big-content"
+          class:"big-content",
+          image: ""
         },
         {
           id: 3,
           step:"",
           heading:"",
+          name:"CheckoutCompleted",
           text:"",
           class:"small-content",
           image: ""
         }
          ],
-      checkoutProgress: 0,
+      currentPage: 0,
+      errorMsg: []
     }
   },
   methods: {
-    changeProgress(val){ this.checkoutProgress = val },
+    changeProgress(val){ this.currentPage = val },
     updatePageInfo(val){
       this.steps[2].heading = val.title
       this.steps[2].text = val.text
       this.steps[2].image = val.img  
-    }
+    },
   }
 };
 </script>
 
 <style lang="scss">
 @import './stylesheets/global';
-.main {
-  &__wrapper {
-    @include size(100vh, 100vw);
-    background-color: $light-bg-c;
-    padding-bottom: 150px;
-  }
-  &__card {
-    position: relative;
-    overflow: hidden;
-    max-width: 1000px;
-    height: 68vh;
-    margin: 0 auto;
-    text-align: center;
-    border-radius: 0;
-    background-color: $white-c;
-    border: none;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    &--innerspace {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      margin: 0 auto;
-      align-items: center;
-      height: 100%;
-      width: 500px;
-    }
-  }
-}
 </style>
