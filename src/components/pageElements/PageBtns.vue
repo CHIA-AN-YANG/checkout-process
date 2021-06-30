@@ -10,8 +10,7 @@
         <button type="submit" :disable="!valid"
                 class="btn btn--round btn--next" 
                 :class="{'inactive': !valid}" 
-                @click="debouncedNext" 
-                :form="formName" v-if="showNext">
+                @click="debouncedNext" v-if="showNext">
           <span>Continuar</span> 
           <svg xmlns="http://www.w3.org/2000/svg" fill="#FFF" class="bi bi-arrow-right-circle" viewBox="-2 -2 20 20">
             <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
@@ -28,7 +27,6 @@ props: {
     pageId: { type:Number, required:true, default:null },
     nextPage:String,
     prevPage:String,
-    formName: { type:String, default:'no-form' },
     valid: { type:Boolean, default:false }
   },
   data(){
@@ -63,6 +61,7 @@ methods: {
   //go to prev/next page along with actions taken
   getNextRoute(){
     if(this.valid){
+      if(this.pageId===1){ this.$emit('sendRequest')}
       if(this.pageId===2){ this.$emit('checkout')}
       if(this.pageId!==2){
         this.$router.push({name:this.nextPage})        

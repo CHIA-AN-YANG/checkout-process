@@ -27,14 +27,13 @@
     </div> 
     <!-- end main content -->
     <PageBtns :nextPage="nextPageB" :prevPage="prevPageB" 
-              :pageId="stepB.id" :valid="true" @checkout="submit" formName="no-name"/>
+              :pageId="stepB.id" :valid="true" @checkout="submit"/>
   </div>  
 </div>
 </main>
 </template>
 
 <script>
-import axios from 'axios'
 import { StripeCheckout } from '@vue-stripe/vue-stripe';
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
@@ -68,18 +67,7 @@ export default {
   methods: {
     submit () {
       // Redirected to Stripe's secure checkout page
-      axios.get("http://www.mocky.io/v2/5e3d41272d00003f7ed95c09")
-        .then(res => { 
-          localStorage.setItem('title', res.data.title )
-          localStorage.setItem('text', res.data.text )
-          localStorage.setItem('img', res.data.img );
-          return this.$emit('fetchMsg', res.data)           
-        })
-        .then(() => this.$refs.checkoutRef.redirectToCheckout())
-        .catch(error => {
-          console.error("Payment Authentification Failed", error)
-          alert(`Payment Authentification Failed.`) })
-        .finally(() => this.loading = false)      
+      this.$refs.checkoutRef.redirectToCheckout() 
     },
   }
  };
