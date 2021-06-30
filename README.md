@@ -1,5 +1,5 @@
 # Checkout Process Mock
-A mock that showcases a checkout process, constructed with Vue.
+A mock that showcases a checkout process, constructed with Vue.js.
 
 ---
 
@@ -38,16 +38,16 @@ npm run build
 ```
 npm run serve
 ```
-### Dummy data for credit card payment:
+### Testing data for credit card payment:
 - Enter random values for name on card, email, and country
-- card number:      4242424242424242
-- cvc:              Random 3 digits
+- card number:      4242 4242 4242 4242
+- cvc:              3 random digits
 - expiration date:  Any future date
 
 ---
 
 ## Unit Test
-This mock uses **Vue Test Utils** - the official unit testing utility library for Vue.js.
+This mock uses **Vue Test Utils** - the official unit testing utility library for Vue.js. 
 Run the following script for unit testing:
 ```
 npm run test:unit
@@ -59,11 +59,15 @@ Since no database is incorporated in this mock, routers are not checked with nav
 
 ## Version Information
   - vue: ^2.6.14
+  - Node.js: ^14.17.1
+  - npm: ^6.14.13
   - vue-router: ^3.5.2
   - @vue-stripe/vue-stripe: ^4.2.5
   - axios: ^0.21.1
   - dotenv: ^10.0.0
   - lodash: ^4.17.21
+  - bootstrap-vue": "^2.21.2"
+  - 
 ## Contributing
-Drop me a line in email if you have any suggestions for improvement! 
+Drop me an email, leave a comment, or make pull request if you have any suggestions for improvement. I would greatly appreciate it!
 My email address is: chiaan.y.creativeworker@gmail.com
