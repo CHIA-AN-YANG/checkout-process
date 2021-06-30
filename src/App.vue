@@ -43,11 +43,7 @@ export default {
           text:"",
         }
       ],
-      successInfo: { title: '', text: '', img: '' }
     } 
-  },
-  methods: {
-    changeProgress(val){ this.currentPage = val },
   }
 };
 </script>

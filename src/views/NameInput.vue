@@ -14,7 +14,8 @@
 
   <div class="main__card ">
     <div class="main__card--innerspace">
-    <!-- start main content -->   
+    <!-- start main content -->    
+    <!-- use this when building req, res: <form id="name-form" method="post" action=""> -->
       <form>
         <h2 v-text="stepA.heading"></h2>
         <p v-text="stepA.text"></p>
@@ -46,8 +47,8 @@
         </div>
       </form>  
       <!-- end main content -->
-    <PageBtns :nextPage="nextPageA" :pageId="stepA.id" 
-              :valid="valid" @sendRequest="sendRequest"/>
+    <PageBtns :nextPage="nextPageA" :pageId="stepA.id" @sendRequest="sendRequest"
+              :valid="valid"/>
   </div>  
 </div>
 </main>
@@ -76,18 +77,16 @@ export default {
   },
   methods: {
     sendRequest(){
-      axios.post("http://www.mocky.io/v2/5e3d41272d00003f7ed95c09",
-      { firstName: this.firstname, lastName: this.lastname })
+      axios.get("http://www.mocky.io/v2/5e3d41272d00003f7ed95c09")
         .then(res => { 
           localStorage.setItem('title', res.data.title )
           localStorage.setItem('text', res.data.text )
-          localStorage.setItem('img', res.data.img );
-          return this.$emit('fetchMsg', res.data)           
+          localStorage.setItem('img', res.data.img )       
         })
         .catch(error => {
-          console.error("Payment Authentification Failed", error)
-          alert(`Payment Authentification Failed.`) })
-        .finally(() => this.loading = false)  
+          console.error("Authentification Failed", error)
+          alert(`Authentification Failed.`) })
+        .finally(() => this.loading = false)    
     },
     checkValid(){
       let nameRegex = /^[A-Z,'-]+$/i

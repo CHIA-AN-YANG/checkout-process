@@ -27,7 +27,7 @@
     </div> 
     <!-- end main content -->
     <PageBtns :nextPage="nextPageB" :prevPage="prevPageB" 
-              :pageId="stepB.id" :valid="true" @checkout="submit"/>
+              :pageId="stepB.id" :valid="true" @checkout="submit" formName="no-name"/>
   </div>  
 </div>
 </main>
@@ -67,7 +67,7 @@ export default {
   methods: {
     submit () {
       // Redirected to Stripe's secure checkout page
-      this.$refs.checkoutRef.redirectToCheckout() 
+      this.$refs.checkoutRef.redirectToCheckout()
     },
   }
  };
