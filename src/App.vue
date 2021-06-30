@@ -35,7 +35,7 @@ export default {
           heading:"Pago del Producto",
           text:"una vez efectuado el pago del producto, recibras un email con las detalles de la compro",
         },
-        { //will get updated by the API data
+        {
           id: 3,
           step:"", 
           heading:"",
