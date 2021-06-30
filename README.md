@@ -23,7 +23,7 @@ npm install
 - Please refer to `.env.example` in root folder for reference.
 - For **publishable key** and **price id**, visit [Stripe](https://stripe.com/).
  1. Create a new account. 
- 2. Create products, your institution, and use the test mode, then get API keys.
+ 2. Create testing products, your institution, and get test data and API keys.
  3. Refer to documentation of [Vue Stripe - Get Started - One-time Payment](https://vuestripe.com/stripe-checkout/one-time-payment) for more detail.
 
 ---
