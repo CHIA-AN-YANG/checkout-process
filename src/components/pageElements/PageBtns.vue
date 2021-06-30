@@ -25,7 +25,7 @@
 import _ from 'lodash'
 export default ({
 props: {
-    pageId:Number,
+    pageId: { type:Number, required:true, default:null },
     nextPage:String,
     prevPage:String,
     formName: { type:String, default:'no-form' },
@@ -39,17 +39,20 @@ props: {
   },
 watch:{
     // decide whether to shoe prev/next btn according to page progress
-  pageId(val){
-    if(val===1){                    
-      this.showNext = true
-      this.showPrev = false
-    }else if(val >= 3){ 
-      this.showNext = false
-      this.showPrev = false
-    }else{                     
-      this.showNext = true
-      this.showPrev = true
-    }
+  pageId: {
+    handler:function(val){
+      if(val===1){                    
+        this.showNext = true
+        this.showPrev = false
+      }else if(val >= 3){ 
+        this.showNext = false
+        this.showPrev = false
+      }else{                     
+        this.showNext = true
+        this.showPrev = true
+      }
+      },
+    immediate: true
     }
   },
   created() {
@@ -68,18 +71,18 @@ methods: {
     return
   },
   getPrevRoute(){
-    if(this.pageId===0){
-        this.confirmNext()
+    if(this.pageId===2){
+        this.confirmPrev()
         return
       }
     this.$router.push({name:this.prevPage})      
     return
   },
-confirmNext(){
+confirmPrev(){
   let confirmAlert =  confirm('You will have to re-fill the form. Do you wish to continue?')
   if(confirmAlert){ 
       this.valid = false
-      this.$router.push({name:this.nextPage})
+      this.$router.push({name:this.prevPage})
       return
     }else{ return }}
   }

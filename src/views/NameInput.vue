@@ -14,10 +14,9 @@
 
   <div class="main__card ">
     <div class="main__card--innerspace">
-    <!-- start main content -->
-    <!-- use this when building back-end, then redirects to next page: -->
-    <!-- <form id="name-form" action="checkout/name" method="POST"> -->
-      <form id="name-form">
+    <!-- start main content -->    
+    <!-- use this when building req, res: <form id="name-form" method="post" action=""> -->
+      <form>
         <h2 v-text="stepA.heading"></h2>
         <p v-text="stepA.text"></p>
         <div class="form-group">
@@ -28,8 +27,8 @@
             type="text" 
             name="firstname" 
             id="firstname" 
-            pattern="/^[A-Z ,'-]+$/i"
-            minlength="3"
+            pattern="^[A-Z,a-z,'-]+$"
+            minlength="2"
             v-model="firstname"
             required>          
         </div>
@@ -41,8 +40,8 @@
             type="text" 
             name="lastname" 
             id="lastname" 
-            pattern="/^[A-Z ,'-]+$/i"
-            minlength="3"
+            pattern="^[A-Z,a-z,'-]+$"
+            minlength="2"
             v-model="lastname"
             required>          
         </div>
@@ -77,7 +76,7 @@ export default {
   },
   methods: {
     checkValid(){
-      let nameRegex = /^[A-Z ,'-]+$/i
+      let nameRegex = /^[A-Z,'-]+$/i
       const nameCheckA = nameRegex.test(this.firstname)
       const nameCheckB = nameRegex.test(this.lastname)
       this.errorMsg=[]
@@ -86,7 +85,7 @@ export default {
         this.errorMsg.push('All slots are required with valid characters only.')
         }
 
-      if(this.firstname.trim().length<3 || this.lastname.trim().length<3){
+      if(this.firstname.trim().length<2 || this.lastname.trim().length<2){
         this.errorMsg.push('Name too short.')
       }else if(!nameCheckA || !nameCheckB){this.errorMsg.push('Contain invalid characters.')}
       

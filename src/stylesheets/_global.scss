@@ -51,6 +51,7 @@ ul,li {
 .btn{
   position: relative;
   overflow: hidden;
+  cursor: pointer;
   &:after {
     content: "";
     position: absolute;

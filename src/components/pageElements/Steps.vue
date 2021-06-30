@@ -126,9 +126,7 @@ export default {
     &--line {
       @include size(0,100%);
       flex: 0 0 100%;
-      border: 1px solid lightslategray;
-      box-sizing: content-box;
-      border-radius: 0.5px;   
+      border-bottom: 2px solid #7f8891;
     }
   }
 }

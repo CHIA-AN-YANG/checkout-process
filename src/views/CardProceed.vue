@@ -18,16 +18,16 @@
     <p v-text="stepB.text"></p>
     <div class="card">
       <img class="central-img" src="@/assets/central-img/creditCards.png" alt="credit card picture">
-      <h4>Tarjeta de Credito</h4>
-      <p>Lorem, ipsum dolor vitae magni odit in optio fuga perspiciatis. dolor vitae magni odit in optio fugadolor vitae magni odit in optio fuga.</p>
+      <h4>Tarjeta de Crédito</h4>
+      <p>Se redirigirá a una plataforma de pago, Se trata de un proceso seguro. Puede Que la validación del pago tarde 24 horas en completarse</p>
       <div class="row justify-content-center">
         <img class="credit-card-img" src="@/assets/visacard.png" alt="visa card">
         <img class="credit-card-img" src="@/assets/mastercard.png" alt="master card">
       </div>
     </div> 
     <!-- end main content -->
-    <PageBtns :nextPage="nextPageB" :pageId="stepB.id" 
-              :valid="true" @checkout="submit" formName="no-name"/>
+    <PageBtns :nextPage="nextPageB" :prevPage="prevPageB" 
+              :pageId="stepB.id" :valid="true" @checkout="submit" formName="no-name"/>
   </div>  
 </div>
 </main>

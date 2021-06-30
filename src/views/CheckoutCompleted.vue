@@ -10,7 +10,7 @@
         <h2>{{successInfo.title}}</h2>
         <p>{{successInfo.text}}</p>
         <!-- end main content -->
-        <PageBtns v-show="false"/>
+        <PageBtns :pageId="stepC.id" v-show="false"/>
       </div>  
     </div>
   </main>

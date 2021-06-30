@@ -26,14 +26,14 @@ export default {
           step:"MIS DATOS",
           name: 'NameInput',
           heading:"Mis Datos",
-          text:"Reviso los datos y comleta aquelo pendientes antes de continuor con el proceso.",
+          text:"Reviso los datos y comleta aquellas pendientes antes de continuar con el proceso.",
         },
         {
           id: 2,
           step:"PAGO",
           name: 'CardProceed',
           heading:"Pago del Producto",
-          text:"una vez efectuado el pago del producto, recibras un email con las detalles de la compro",
+          text:"una vez efectuado el pago del producto, recibirás un email con las detalles de la compra.",
         },
         {
           id: 3,
