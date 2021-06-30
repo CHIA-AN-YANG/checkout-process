@@ -102,7 +102,9 @@ confirmPrev(){
     flex: 0 0 120px;
     transition: $transition;
     >* { align-self: center; }
-    >svg { @include size(1.6em); }
+    >svg { 
+      @include size(1.6em); 
+    }
   }
   .btn--prev {
     @include blue-outline-style;
@@ -115,11 +117,37 @@ confirmPrev(){
   .btn--next {
     @include blue-solid-style;
     margin-left: auto;
-    >svg { margin-left: .2em; }
+    >svg { 
+      margin-left: .2em; }
     &.inactive {
       opacity: .5;
       filter: grayscale(70%);
     }
   }
+}
+@media (max-width: $breakpoint-phone)
+{
+  .btn--holder {
+    @include size(80px, 100%);
+    padding: 0 .6em 20px;
+    .btn--next,.btn--prev {
+      >svg { 
+        @include size(1.6em); 
+      }
+    }
+  }
 } 
+@media (min-width: $breakpoint-phone) and (max-width: $breakpoint-tablet) 
+{
+  .btn--holder {
+    @include size(100px, 100%);
+    padding: 0 .6em 20px;
+    .btn--next,.btn--prev {
+      >svg { 
+        @include size(1.6em); 
+      }
+    }
+  }
+}
+
 </style>

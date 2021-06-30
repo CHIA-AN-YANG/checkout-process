@@ -94,4 +94,23 @@ export default {
   margin: 0 0.5em;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
+@media (max-width: $breakpoint-phone) {
+.heading {
+  margin-top: 8vh;
+}
+.main__card--innerspace{
+  padding-left: 2em;  
+  padding-right: 2em;
+  padding-bottom: 100px;
+}
+}
+@media (min-width: $breakpoint-phone) and (max-width: $breakpoint-tablet) 
+{
+.heading {
+  margin-top: 8vh;
+}
+.central-img__holder {
+  margin-top: 6vh;
+}
+}
 </style>

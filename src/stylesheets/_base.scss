@@ -9,6 +9,9 @@ $green-certified-c: #74c900;
 
 //variables-other
 $transition: all .3s .5s;
+$breakpoint-phone: 640px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop:1024px;
 
 //mixin-position
 @mixin reset-list {

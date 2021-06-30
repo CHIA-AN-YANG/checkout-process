@@ -5,7 +5,7 @@
 
   <!-- start error message -->
   <div class="msg__card alert alert-danger alert-dismissible" role="alert" v-show="errorMsg.length">
-      <span v-for="error in errorMsg" :key="error">{{"* "+error+" "}}</span>
+      <li class="msg__li" v-for="error in errorMsg" :key="error">{{error+" "}}</li>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close" @click="closeErrorAlert">
       <span aria-hidden="true">&times;</span>
     </button>      
@@ -77,10 +77,13 @@ export default {
   },
   methods: {
     sendRequest(){
-      axios.get("http://www.mocky.io/v2/5e3d41272d00003f7ed95c09")
+      axios.post("https://run.mocky.io/v3/5fd5b0a0-7cec-4ccf-bdec-b9c99c78e29f", {
+        firstname: this.firstname,
+        lastname: this.lastname })
         .then(res => { 
-          localStorage.setItem('title', res.data.title )
-          localStorage.setItem('text', res.data.text )
+          const locale = 'zh_CN'
+          localStorage.setItem('title', res.data.title[locale] )
+          localStorage.setItem('text', res.data.message[locale] )
           localStorage.setItem('img', res.data.img )       
         })
         .catch(error => {
@@ -124,7 +127,16 @@ export default {
   transform: translateX(-50%);
   text-align: left;
   opacity: .9;
+  z-index: 50;
 };
+@media (max-width: $breakpoint-phone) {
+  .msg__card { width: 90vw;}
+};
+@media (min-width: $breakpoint-phone) and (max-width: $breakpoint-tablet) 
+{
+  .msg__card { width: 90vw;}
+}
+.msg__li{ list-style-type: disc;}
 form {
   margin: 9vh auto 0;
   padding-top: 1vh;
@@ -135,6 +147,27 @@ form {
   }
   input {
     text-transform: capitalize;
+  }
+}
+@media (max-width: $breakpoint-phone) {
+  form {
+    margin: 5vh auto 0;
+    width:100%;
+    padding: .6em;
+    .form-group {
+      margin: 1em 0;
+    }
+  }
+}
+@media (min-width: $breakpoint-phone) and (max-width: $breakpoint-tablet) 
+{
+  form {
+    margin: 5vh auto 0;
+    width:100%;
+    padding: 1em;
+    .form-group {
+      margin: 1em 0;
+    }
   }
 }
 </style>

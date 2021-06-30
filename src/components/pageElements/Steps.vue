@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../../stylesheets/base';
+@import '../../stylesheets/global';
 .step {
   &__row {
     height: 100px;
@@ -83,9 +83,11 @@ export default {
     perspective: 1000px;
     &.current {
       @include blue-solid-style;
+      margin-right: 0;
     }
     &.on-hold {
       @include blue-outline-style;
+      margin-right: 0;
     }
     &.completed {
       &:after {
@@ -127,6 +129,27 @@ export default {
       @include size(0,100%);
       flex: 0 0 100%;
       border-bottom: 2px solid #7f8891;
+    }
+  }
+}
+@media (max-width: $breakpoint-phone) {
+  .step {
+    &__row {
+      height: 80px;
+      padding: 1.2em 0;
+    }
+    &__holder {
+      p {
+        top: 3em;
+        left: 1.5em;
+        font-size: .8em;
+        font-weight: 500;
+      }
+    }
+    &__connection {
+      &--holder{
+        flex: 0 1 60px;
+      }
     }
   }
 }

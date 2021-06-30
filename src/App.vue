@@ -2,13 +2,12 @@
 <div class="wrapper__app">
   <Navbar/>
   <!-- start main page content -->
-  <!-- 2nd line: NameInput | 3rd, 4th: Cardproceed | 5th, 6th: CheckoutCompleted -->
+  <!-- 2nd line: NameInput | 3rd, 4th: Cardproceed | 5th: CheckoutCompleted -->
   <router-view :to="{ name: 'NameInput' }" :steps="steps"
   :stepA="steps[0]" :nextPageA="steps[1].name"          
   :stepB="steps[1]" :nextPageB="steps[2].name" 
   :prevPageB="steps[0].name" 
-  :stepC="steps[2]" :successInfo="successInfo" 
-  :prevPageC="steps[1].name"/> 
+  :stepC="steps[2]" :prevPageC="steps[1].name"/> 
   <!-- start main page content -->    
 </div>
 </template>

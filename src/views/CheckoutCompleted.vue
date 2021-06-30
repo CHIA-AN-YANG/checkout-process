@@ -62,4 +62,20 @@ export default {
   width: 100px;
   margin: 0 auto;
 }
+@media (max-width: $breakpoint-phone) {
+.central-img__holder {
+  margin-top: 15vh;
+}
+.main__card--innerspace{
+  padding-left: 2em;  
+  padding-right: 2em;
+  padding-bottom: 300px;
+}
+}
+@media (min-width: $breakpoint-phone) and (max-width: $breakpoint-tablet) 
+{
+.central-img__holder {
+  margin-top: 8vh;
+}
+}
 </style>
