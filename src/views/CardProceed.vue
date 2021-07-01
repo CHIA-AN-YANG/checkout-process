@@ -26,7 +26,7 @@
       </div>
     </div> 
     <!-- end main content -->
-    <PageBtns :nextPage="nextPageB" :prevPage="prevPageB" 
+    <PageBtns :nextPage="nextPageB" :prevPage="prevPageB" @clearName="clearName"
               :pageId="stepB.id" :proceedText="transPay" :valid="true" @checkout="submit" formName="no-name"/>
   </div>  
 </div>
@@ -72,6 +72,9 @@ export default {
       // Redirected to Stripe's secure checkout page
       this.$refs.checkoutRef.redirectToCheckout()
     },
+    clearName(){
+      this.$store.commit('removeName')
+    }
   }
  };
 </script>

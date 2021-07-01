@@ -48,7 +48,7 @@
       </form>  
       <!-- end main content -->
     <PageBtns :nextPage="nextPageA" :pageId="stepA.id" @sendRequest="sendRequest"
-              :proceedText="transContinue" :valid="valid"/>
+              :proceedText="transContinue" :valid="valid" />
   </div>  
 </div>
 </main>
@@ -85,11 +85,17 @@ export default {
         firstname: this.firstname,
         lastname: this.lastname })
         .then(res => { 
+          const nameObj = {
+            firstname: this.firstname,
+            lastname: this.lastname 
+            }
           const locale = this.$store.state.lang          
           localStorage.setItem('title', res.data.title[locale] )
           localStorage.setItem('text', res.data.message[locale] )
-          localStorage.setItem('img', res.data.img )       
+          localStorage.setItem('img', res.data.img )  
+          this.$store.commit('storeName', nameObj)                //save name to vuex store  
         })
+        .then(() => this.$router.push({name:'CardProceed'}))
         .catch(error => {
           console.error(this.$store.state.usedtxt.authFail, error)
           alert(this.$store.state.usedtxt.authFail) })

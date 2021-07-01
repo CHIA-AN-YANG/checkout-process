@@ -1,4 +1,4 @@
-import { shallowMount, mount, createLocalVue } from "@vue/test-utils"
+import { shallowMount } from "@vue/test-utils"
 import NameInput from "@/views/NameInput.vue"
 import store from '@/store'
 
@@ -14,7 +14,7 @@ describe("NameInput.vue", () => {
     wrapper.setData({ lastname: '@$%%%' })
     await input.trigger('keydown')
     expect(wrapper.vm.valid).toBe(false)
-    expect(wrapper.text()).toContain("名字太短。")    
+    expect(wrapper.text()).toContain("名字太短。")    //string: Name too short
   })
 
   it('Become validated with legitimate name input.', async () => {

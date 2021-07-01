@@ -62,17 +62,14 @@ methods: {
   //go to prev/next page along with actions taken
   getNextRoute(){
     if(this.valid){
-      if(this.pageId===1){ this.$emit('sendRequest')}
-      if(this.pageId===2){ this.$emit('checkout')}
-      if(this.pageId!==2){
-        this.$router.push({name:this.nextPage})        
+      if(this.pageId===1){ this.$emit('sendRequest') }
+      if(this.pageId===2){ this.$emit('checkout')}  
       }
-    }
-    return
-  },
+    },
   getPrevRoute(){
     if(this.pageId===2){
         this.confirmPrev()
+        this.$emit('clearName')
         return
       }
     this.$router.push({name:this.prevPage})      

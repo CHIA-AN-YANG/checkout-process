@@ -9,9 +9,21 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state : {
+    // for language change
     lang: 'zh_CN',
     usedtxt: zh_CN,
     steps: zh_CNsteps,
+    // for name input
+    firstname: null,
+    lastname: null
+  },
+  getters: {
+    countValidNames: state => {
+      let nameArr = []
+      if(state.firstname){nameArr.push(state.firstname)}
+      if(state.lastname){nameArr.push(state.lastname)}
+      return nameArr.length
+    },
   },
   mutations :{
   setLang (state, value) {    
@@ -25,6 +37,15 @@ export default new Vuex.Store({
       state.usedtxt = en
       state.steps = ensteps
     }
+  },
+  storeName (state, obj) {
+    const { firstname, lastname } = obj
+    state.firstname = firstname
+    state.lastname = lastname
+  },
+  removeName (state) {
+    state.firstname = null
+    state.lastname = null
   }
 }
 });
