@@ -1,6 +1,6 @@
 <template>
 <div class="wrapper__app">
-  <Navbar/>
+  <Navbar @renewSteps="renewStep"/>
   <!-- start main page content -->
   <!-- 2nd line: NameInput | 3rd, 4th: Cardproceed | 5th: CheckoutCompleted -->
   <router-view :to="{ name: 'NameInput' }" :steps="steps"
@@ -13,36 +13,21 @@
 </template>
 
 <script>
+import zh_CNsteps from '@/locale/zh_CNsteps.json'
 import Navbar from "@/components/layouts/Navbar.vue";
 export default {
   name: "App",
   components: { Navbar, },
   data(){
-    return {
-      steps: [
-        {
-          id: 1,
-          step:"MIS DATOS",
-          name: 'NameInput',
-          heading:"Mis Datos",
-          text:"Reviso los datos y comleta aquellas pendientes antes de continuar con el proceso.",
-        },
-        {
-          id: 2,
-          step:"PAGO",
-          name: 'CardProceed',
-          heading:"Pago del Producto",
-          text:"una vez efectuado el pago del producto, recibirás un email con las detalles de la compra.",
-        },
-        {
-          id: 3,
-          step:"", 
-          heading:"",
-          name:"CheckoutCompleted",
-          text:"",
-        }
-      ],
-    } 
+    return { steps: zh_CNsteps } 
+  },
+  computed: {
+    getSteps(){ return this.$store.steps}
+  },
+  methods: {
+    renewStep(val){
+      this.steps = val
+    }
   }
 };
 </script>

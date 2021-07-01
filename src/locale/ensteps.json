@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "step":"My Data",
+    "name": "NameInput",
+    "heading":"My Data",
+    "text":"Please enter your personal data and press continue."
+  },
+  {
+    "id": 2,
+    "step":"Payment",
+    "name": "CardProceed",
+    "heading":"Payment",
+    "text":"After making the payment you will receive a confirmation email with details of your purchase."
+  },
+  {
+    "id": 3,
+    "step":"", 
+    "heading":"",
+    "name":"CheckoutCompleted",
+    "text":""
+  }
+  ]

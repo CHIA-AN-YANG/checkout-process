@@ -1,0 +1,17 @@
+{ 
+  "lang": "EN",
+  "help": "help",
+  "signin": "sign in",
+  "firstname": "First Name",
+  "lastname": "Last Name",
+  "creditCard": "Credit Card",
+  "creditCardText": "You will be redirected to a secure payment platform. This is a secure process. The validation of your payment can take up to 24 hours.",
+  "continue": "Continue",
+  "back": "Back",
+  "pay": "Pay",
+  "errorShort":"Name too short.",
+  "errorCharacter":"Contain invalid characters.",
+  "errorBlank":"All slots are required with valid characters only.",
+  "confirmMsg":"You will have to re-fill the form. Do you wish to continue?",
+  "authFail":"Authentification Failed."
+}

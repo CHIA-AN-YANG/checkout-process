@@ -1,0 +1,23 @@
+[
+{
+  "id": 1,
+  "step":"我的資訊",
+  "name": "NameInput",
+  "heading":"我的資訊",
+  "text":"請輸入您的個人資訊，並進行下一步。"
+},
+{
+  "id": 2,
+  "step":"結帳",
+  "name": "CardProceed",
+  "heading":"結帳",
+  "text":"付款後，您將會收到一封驗證Email"
+},
+{
+  "id": 3,
+  "step":"", 
+  "heading":"",
+  "name":"CheckoutCompleted",
+  "text":""
+}
+]

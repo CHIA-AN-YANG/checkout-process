@@ -1,0 +1,17 @@
+ {
+    "lang": "中文",
+    "help": "常見問題",
+    "signin": "登入帳戶",
+    "firstname": "名字",
+    "lastname": "姓氏",
+    "creditCard": "信用卡支付",
+    "creditCardText": "頁面跳轉道支付平台。這是具有安全防護的過程。您會在24小時內收到付款的驗證信。",
+    "continue": "下一步",
+    "back": "上一步",
+    "pay": "結帳",
+    "errorShort":"名字太短。",
+    "errorCharacter":"含有不接受字元。",
+    "errorBlank":"所有欄位皆為必填，並不可使用英文字母外的特殊字元或空白",
+    "confirmMsg":"回上一步將會需要重新填寫表單，要繼續嗎?",
+    "authFail":"驗證失敗。"
+ }

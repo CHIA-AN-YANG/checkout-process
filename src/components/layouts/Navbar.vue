@@ -3,18 +3,22 @@
     <ul class="nav__lists row">
       <li class="nav__list nav__list--ayuda">
         <img src="@/assets/navbar-icons/help-icon.svg" alt="help-icon-img">
-        <a href="#">AYUDA</a>        
+        <a href="#">{{transHelp}}</a>        
       </li>
 
       <li class="nav__list nav__list--signin">
         <img src="@/assets/navbar-icons/user-auth.svg" alt="user-auth-img">
-        <a href="#">SIGN IN</a>
+        <a href="#">{{transSignin}}</a>
       </li>
 
       <li class="nav__list nav__list--es">
-        <a href="#">ES</a>
-        <img src="@/assets/navbar-icons/arrow-down.svg" alt="arrow-down-img">
+        <div class="nav__dropdown-menu">
+          {{currentLang}}
+          <img src="@/assets/navbar-icons/arrow-down.svg" alt="arrow-down-img">
+          <div class="nav__dropdown-item" @click="switchLang"><span v-text="currentLang==='EN'?'中文':'EN'"></span></div>
+        </div>
       </li>
+
     </ul>
   </nav>
 </template>
@@ -24,9 +28,30 @@ export default {
   props: {
     msg: String,
   },
+  data(){return {
+  }},
+  computed:{
+    currentLang(){ return this.$store.state.usedtxt.lang },
+    transHelp(){ return this.$store.state.usedtxt.help },
+    transSignin(){ return this.$store.state.usedtxt.signin }
+  },
+  methods: {
+    switchLang(){
+      console.log('current lang:', this.$store.state.lang)
+      let chosenLang
+      if(this.$store.state.usedtxt.lang==='EN'){ chosenLang='zh_CN'
+      }else{ chosenLang='en' }
+      console.log('chosen:', chosenLang)
+      
+      this.$store.commit('setLang', chosenLang)
+      console.log('change the lang!:', this.$store.state.lang)
+      this.$emit('renewSteps', this.$store.state.steps)
+    }
+  }
 };
 </script>
 <style scoped lang="scss">
+@import '../../stylesheets/base';
 @import '../../stylesheets/global';
 .nav {
   &__lists{
@@ -44,13 +69,41 @@ export default {
       line-height: 40px;
       padding: 5px 1rem;
       color: inherit;
-    }    
+    }
+  }
+  &__dropdown-item {
+    display: block;
+    position: absolute;
+    background-color: $white-c;
+    opacity: 0;
+    border-radius: 0 0 8px 8px;
+    top: 50px;
+    @include size(40px,70px);
+    padding-left: 1em;
+    transition: $transition;
+    cursor: pointer;
+    pointer-events: none;
+    z-index: 1;
+  }
+  &__dropdown-menu {
+    position: relative;
+    display: inline-block;
+    line-height: 40px;
+    padding: 5px 1rem;
+    color: inherit; 
+    z-index: 5;
+    &:hover .nav__dropdown-item {
+      top: 50px;
+      opacity: 1;
+      pointer-events: auto;
+    } 
+  }
   }  
-}
+
 @media (max-width: $breakpoint-phone) {
 .nav {
   &__lists{
-    height: 25px;
+    height: 28px;
     padding: 0;
     justify-content: center;
   }
@@ -59,16 +112,28 @@ export default {
     width: 30vw;
     text-align: center;
     &--signin{
-    flex: 0 1 40vw;
-    width: 40vw;      
+    width: 40vw;
     }
     >a {
-      line-height: 16px;
+      line-height: 1em;
       padding: 2px 1rem;
-    }    
+    }
+  }
+  &__dropdown-item {
+    top: 28px;
+    font-size: .8em;
+    @include size(28px,20vw);
+    padding-left: .8em;
+    font-size: .8em;
+  }
+  &__dropdown-menu {
+    font-size: .8em;
+    line-height: 1em;
+    padding: 2px 1rem;
+  }    
   }  
 }
-}
+
 @media (min-width: $breakpoint-phone) and (max-width: $breakpoint-tablet) 
 {
 .nav {
@@ -84,8 +149,20 @@ export default {
     >a {
       line-height: 22px;
       padding: 4px 10px;
-    }    
+    }
+  }   
+  &__dropdown-item {
+    top: 35px;
+    @include size(35px,20vw);
+    padding-left: .8em;
+    font-size: .8em;
+  }
+  &__dropdown-menu {
+    font-size: .8em;
+    line-height: 22px;
+    padding: 4px 10px;    
   }  
+  }
 }
-}
+
 </style>

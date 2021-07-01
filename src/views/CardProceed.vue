@@ -18,8 +18,8 @@
     <p v-text="stepB.text"></p>
     <div class="card">
       <img class="central-img" src="@/assets/central-img/creditCards.png" alt="credit card picture">
-      <h4>Tarjeta de Crédito</h4>
-      <p>Se redirigirá a una plataforma de pago, Se trata de un proceso seguro. Puede Que la validación del pago tarde 24 horas en completarse</p>
+      <h4>{{this.$store.state.usedtxt.creditCard}}</h4>
+      <p>{{this.$store.state.usedtxt.creditCardText}}</p>
       <div class="row justify-content-center">
         <img class="credit-card-img" src="@/assets/visacard.png" alt="visa card">
         <img class="credit-card-img" src="@/assets/mastercard.png" alt="master card">
@@ -27,7 +27,7 @@
     </div> 
     <!-- end main content -->
     <PageBtns :nextPage="nextPageB" :prevPage="prevPageB" 
-              :pageId="stepB.id" :valid="true" @checkout="submit" formName="no-name"/>
+              :pageId="stepB.id" :proceedText="transPay" :valid="true" @checkout="submit" formName="no-name"/>
   </div>  
 </div>
 </main>
@@ -63,6 +63,9 @@ export default {
       cancelURL: `${process.env.VUE_APP_BASE_URL}/checkout/name`,
       loading: false
     };
+  },
+  computed: {
+    transPay(){ return this.$store.state.usedtxt.pay}
   },
   methods: {
     submit () {

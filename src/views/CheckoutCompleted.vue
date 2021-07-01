@@ -77,5 +77,8 @@ export default {
 .central-img__holder {
   margin-top: 8vh;
 }
+.main__card--innerspace{
+  padding-bottom: 60px;
+}
 }
 </style>
