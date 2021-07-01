@@ -55,9 +55,6 @@
 </template>
 
 <script>
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
-}
 import axios from 'axios'
 import Steps from "@/components/pageElements/Steps.vue"
 import PageBtns from "@/components/pageElements/PageBtns.vue"
