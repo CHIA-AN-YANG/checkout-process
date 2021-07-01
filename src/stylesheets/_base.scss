@@ -51,9 +51,35 @@ $breakpoint-desktop:1024px;
   border: 2px solid $blue-c;
   color: $blue-c;
 }
-
-//keyframe
+//mixin-animation
+@mixin flyin {
+  animation: flyin 1.2s ease forwards;
+  opacity: 0;
+  transform: translateX(-100%);
+  filter: blur(4px);
+}
+@mixin fallin {
+  animation: fallin 1.2s ease forwards;
+  opacity: 0;
+  transform: scale(2);
+  filter: blur(4px);
+}
+//keyframes
 @keyframes ring {
   0%   { width: 1em;  height: 1em;  opacity: 1; }
   100% { width: 60px; height: 60px; opacity: 0; }
+}
+@keyframes flyin {
+   to { 
+     filter: blur(0);
+     transform: translateX(0);
+     opacity: 1;
+   }
+}
+@keyframes fallin {
+  to { 
+    filter: blur(0);
+    transform: scale(1);
+    opacity: 1;
+  }
 }

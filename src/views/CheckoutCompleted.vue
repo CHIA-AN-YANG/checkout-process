@@ -7,8 +7,8 @@
         <div id="diploma" class="central-img__holder">
           <img class="central-img" :src="imgsrc">
         </div>
-        <h2>{{successInfo.title}}</h2>
-        <p>{{successInfo.text}}</p>
+        <h2>{{getTitle}}</h2>
+        <p>{{getMessage}}</p>
         <!-- end main content -->
         <PageBtns :pageId="stepC.id" v-show="false"/>
       </div>  
@@ -33,20 +33,33 @@ export default {
     return {
      pageId: this.stepC.id,
      successInfo: { title: "", text: "", img: "" },
-     imgsrc:""
+     successMsg: { title: "", message: "", img: "" },
+     imgsrc:"",
+     imgsrc2:""
+    }
+  },
+  computed: {
+    getTitle(){
+      const locale = this.$store.state.lang
+      return this.successMsg.title[locale]
+    },
+    getMessage(){
+      const locale = this.$store.state.lang
+      return this.successMsg.message[locale]
     }
   },
   watch: {
-    successInfo: {
+    successMsg: {
       handler(val){ this.imgsrc = require(`@/assets/${val.img}`) },
       deep: true
     }
   },
   created(){
-    this.successInfo.title =localStorage.getItem('title')
-    this.successInfo.text =localStorage.getItem('text')
-    this.successInfo.img =localStorage.getItem('img')
-  }}
+    this.successMsg.title = this.$store.getters.getSuccessMsg.title
+    this.successMsg.message = this.$store.getters.getSuccessMsg.message
+    this.successMsg.img = this.$store.getters.getSuccessMsg.img
+  },
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -58,6 +71,7 @@ export default {
   box-shadow: none;
 }
 .central-img {
+  @include fallin;
   height: 80px;
   width: 100px;
   margin: 0 auto;

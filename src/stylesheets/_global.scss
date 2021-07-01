@@ -41,7 +41,7 @@ ul,li {
     position: relative;
     overflow: hidden;
     max-width: 1000px;
-    height: 68vh;
+    height: 55vh;
     margin: 0 auto;
     text-align: center;
     border-radius: 0;
@@ -62,12 +62,13 @@ ul,li {
 @media (max-width: $breakpoint-phone) {
   .main {
     &__wrapper {
-      padding-bottom: 130px;
+      padding-bottom: 30px;
       height: auto;
       min-height: 100vh;
     }
     &__card {
       max-width: 100vw;
+      overflow: scroll;
       height: auto;
       box-shadow: none;
       &--innerspace {
@@ -85,14 +86,28 @@ ul,li {
       min-height: 100vh;
     }
     &__card {
-      max-width: 90vw;
+      max-width: 86vw;
+      overflow: scroll;
       height: auto;
       &--innerspace {
-        width:86vw;
+        width:78vw;
       }
     }
-  }
+  }  
 }
+
+@media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+  .main {
+    &__card {
+      max-width: 86vw;
+      height: 50vh;
+      &--innerspace {
+        width:78vw;
+      }
+    }
+  }  
+}
+
 .btn{
   position: relative;
   overflow: hidden;

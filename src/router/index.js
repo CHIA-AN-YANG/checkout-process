@@ -38,8 +38,6 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   if(to.meta.requiresAuth){   //if the requiresAuth in router exists, then do ... before sending response.
     if( store.getters.countValidNames<2 ){
-      console.log('name count:',store.getters.countValidNames )
-      console.log('stored name:',store.getters.storedName )
       next({ name:'NameInput' })
     } 
     else next() 

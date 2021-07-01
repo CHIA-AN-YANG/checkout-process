@@ -89,13 +89,10 @@ export default {
             firstname: this.firstname,
             lastname: this.lastname 
             }
-          const locale = this.$store.state.lang          
-          localStorage.setItem('title', res.data.title[locale] )
-          localStorage.setItem('text', res.data.message[locale] )
-          localStorage.setItem('img', res.data.img )  
-          this.$store.commit('storeName', nameObj)                //save name to vuex store  
+          this.$store.commit('saveMsg', res.data)   //save fetched data to vuex store
+          this.$store.commit('storeName', nameObj)  //save name to vuex store for auth
+          return this.$router.push({name:'CardProceed'})   //go to next page
         })
-        .then(() => this.$router.push({name:'CardProceed'}))
         .catch(error => {
           console.error(this.$store.state.usedtxt.authFail, error)
           alert(this.$store.state.usedtxt.authFail) })
@@ -128,6 +125,7 @@ export default {
 </script>
 
 <style scoped lang='scss'>
+@import '../stylesheets/base';
 @import '../stylesheets/global';
 .msg__card {
   position: absolute;
@@ -161,9 +159,10 @@ form {
 }
 @media (max-width: $breakpoint-phone) {
   form {
+    @include flyin;
     margin: 5vh auto 0;
     width:100%;
-    padding: .6em;
+    padding: 1em;
     .form-group {
       margin: 1em 0;
     }
@@ -174,7 +173,7 @@ form {
   form {
     margin: 5vh auto 0;
     width:100%;
-    padding: 1em;
+    padding: 2em;
     .form-group {
       margin: 1em 0;
     }

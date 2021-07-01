@@ -40,13 +40,18 @@ module.exports = {
         test: /\.css$/,
         use: [
           'vue-style-loader',
-          'css-loader'
+          'css-loader',
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: ["postcss-preset-env", require('autoprefixer')],
+              },},},
         ]
       }
     ]
   },
   plugins: [
-    // make sure to include the plugin for the magic
     new VueLoaderPlugin()
   ]
 }

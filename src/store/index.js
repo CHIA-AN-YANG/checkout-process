@@ -15,7 +15,8 @@ export default new Vuex.Store({
     steps: zh_CNsteps,
     // for name input
     firstname: null,
-    lastname: null
+    lastname: null,
+    successMsg: { }
   },
   getters: {
     countValidNames: state => {
@@ -23,6 +24,13 @@ export default new Vuex.Store({
       if(state.firstname){nameArr.push(state.firstname)}
       if(state.lastname){nameArr.push(state.lastname)}
       return nameArr.length
+    },
+    getSuccessMsg: state => {
+      return {
+        'title':state.successMsg.title,
+        'message':state.successMsg.message,
+        'img':state.successMsg.img
+      }
     },
   },
   mutations :{
@@ -46,6 +54,9 @@ export default new Vuex.Store({
   removeName (state) {
     state.firstname = null
     state.lastname = null
+  },
+  saveMsg (state, obj) {
+    state.successMsg = obj
   }
 }
 });

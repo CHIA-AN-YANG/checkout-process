@@ -50,6 +50,9 @@ export default {
 @import '../../stylesheets/base';
 @import '../../stylesheets/global';
 .nav {
+  &__card {
+    background-color: $white-c;
+  }
   &__lists{
     height: 50px;
     margin-bottom: 0;
