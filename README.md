@@ -55,7 +55,7 @@ npm run test:unit
 ---
 
 ## Security
-Since no database is incorporated in this mock, routers are not checked with navigation guard and local storage is used to store success message.
+Since no database is incorporated in this mock, routers are not checked with navigation guard and success message is stored with local storage.
 
 ## Version Information
   - vue: ^2.6.14
@@ -67,7 +67,7 @@ Since no database is incorporated in this mock, routers are not checked with nav
   - dotenv: ^10.0.0
   - lodash: ^4.17.21
   - bootstrap-vue": "^2.21.2"
-  - 
+  
 ## Contributing
 Drop me an email, leave a comment, or make pull request if you have any suggestions for improvement. I would greatly appreciate it!
 My email address is: chiaan.y.creativeworker@gmail.com
