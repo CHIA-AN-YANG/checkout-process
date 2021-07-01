@@ -98,7 +98,7 @@ export default {
       pointer-events: auto;
     } 
   }
-  }  
+}  
 
 @media (max-width: $breakpoint-phone) {
 .nav {
@@ -120,22 +120,28 @@ export default {
     }
   }
   &__dropdown-item {
-    top: 28px;
-    font-size: .8em;
-    @include size(28px,20vw);
-    padding-left: .8em;
-    font-size: .8em;
+    top: 22px;
+    font-size: 1em;
+    @include size(26px,50px);
+    padding-top: 5px;
+    padding-left: 0;
+    text-align: center;
+    >span {
+      line-height: 1em;
+    }
   }
   &__dropdown-menu {
     font-size: .8em;
     line-height: 1em;
     padding: 2px 1rem;
+    &:hover .nav__dropdown-item {
+      top: 22px;
+    } 
   }    
   }  
 }
 
-@media (min-width: $breakpoint-phone) and (max-width: $breakpoint-tablet) 
-{
+@media (min-width: $breakpoint-phone) and (max-width: $breakpoint-tablet) {
 .nav {
   &__lists{
     height: 35px;
@@ -160,7 +166,10 @@ export default {
   &__dropdown-menu {
     font-size: .8em;
     line-height: 22px;
-    padding: 4px 10px;    
+    padding: 4px 10px;
+    &:hover .nav__dropdown-item {
+      top: 35px;
+    }     
   }  
   }
 }
