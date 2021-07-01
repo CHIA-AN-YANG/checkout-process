@@ -94,7 +94,6 @@ methods: {
   margin-top: auto;
   flex: 1 1 100px;
   display: flex;
-  padding-bottom: 20px;
   .btn--next,.btn--prev {
     align-self: center;
     flex: 0 0 120px;

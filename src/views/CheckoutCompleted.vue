@@ -32,10 +32,8 @@ export default {
   data(){
     return {
      pageId: this.stepC.id,
-     successInfo: { title: "", text: "", img: "" },
      successMsg: { title: "", message: "", img: "" },
-     imgsrc:"",
-     imgsrc2:""
+     imgsrc:""
     }
   },
   computed: {
@@ -55,9 +53,10 @@ export default {
     }
   },
   created(){
-    this.successMsg.title = this.$store.getters.getSuccessMsg.title
-    this.successMsg.message = this.$store.getters.getSuccessMsg.message
-    this.successMsg.img = this.$store.getters.getSuccessMsg.img
+    this.successMsg = this.$store.getters.getSuccessMsg
+    // this.successMsg.title = this.$store.getters.getSuccessMsg.title
+    // this.successMsg.message = this.$store.getters.getSuccessMsg.message
+    // this.successMsg.img = this.$store.getters.getSuccessMsg.img
   },
   }
 </script>

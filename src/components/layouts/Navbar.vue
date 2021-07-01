@@ -81,7 +81,6 @@ export default {
     padding-left: 1em;
     transition: $transition;
     cursor: pointer;
-    pointer-events: none;
     z-index: 1;
   }
   &__dropdown-menu {
@@ -120,8 +119,10 @@ export default {
   }
   &__dropdown-item {
     top: 22px;
-    font-size: 1em;
+    font-size: .8em;
     @include size(26px,50px);
+    left: 50%;
+    transform: translateX(-50%);
     padding-top: 5px;
     padding-left: 0;
     text-align: center;
@@ -135,6 +136,7 @@ export default {
     padding: 2px 1rem;
     &:hover .nav__dropdown-item {
       top: 22px;
+      pointer-events: auto;
     } 
   }    
   }  
@@ -154,11 +156,12 @@ export default {
     >a {
       line-height: 22px;
       padding: 4px 10px;
+      font-size: .8em;
     }
   }   
   &__dropdown-item {
     top: 35px;
-    @include size(35px,20vw);
+    @include size(28px,90px);
     padding-left: .8em;
     font-size: .8em;
   }
@@ -168,6 +171,43 @@ export default {
     padding: 4px 10px;
     &:hover .nav__dropdown-item {
       top: 35px;
+      pointer-events: auto;
+    }     
+  }  
+  }
+}
+
+@media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
+.nav {
+  &__lists{
+    height: 35px;
+    padding: 0;
+    justify-content: flex-end;
+  }
+  &__list {
+    flex: 0 1 100px;
+    width: 100px; 
+    font-size: 1em;
+    text-align: left;
+    >a {
+      line-height: 22px;
+      font-size: 1em;
+      padding: 4px 10px;
+    }
+  }   
+  &__dropdown-item {
+    top: 35px;
+    @include size(28px,60px);
+    padding-left: 1em;
+    font-size: 1em;
+  }
+  &__dropdown-menu {
+    font-size: 1em;
+    line-height: 22px;
+    padding: 4px 10px;
+    &:hover .nav__dropdown-item {
+      top: 35px;
+      pointer-events: auto;
     }     
   }  
   }

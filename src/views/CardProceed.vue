@@ -96,4 +96,16 @@ export default {
   padding-bottom: 2em;
 }
 }
+@media (min-width: $breakpoint-phone) and (max-width: $breakpoint-tablet) and (orientation: portrait)
+{
+.central-img__holder {
+  margin-top: 6vh;
+}
+.main__card--innerspace{
+  padding-top: 4vh;
+  padding-left: 2em;  
+  padding-right: 2em;
+  padding-bottom: 2em;
+}
+}
 </style>
