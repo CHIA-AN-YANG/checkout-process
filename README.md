@@ -19,13 +19,6 @@ Run npm install to install required plugins.
 ```
 npm install
 ```
-### 2. Setup environmental Variables
-- Please refer to `.env.example` in root folder for reference.
-- For **publishable key** and **price id**, visit [Stripe](https://stripe.com/).
- 1. Create a new account. 
- 2. Create testing products, your institution, and get test data and API keys.
- 3. Refer to documentation of [Vue Stripe - Get Started - One-time Payment](https://vuestripe.com/stripe-checkout/one-time-payment) for more detail.
-
 ---
 
 ## Usage 
@@ -38,11 +31,6 @@ npm run build
 ```
 npm run serve
 ```
-### Testing data for credit card payment:
-- Enter random values for name on card, email, and country
-- card number:      4242 4242 4242 4242
-- cvc:              3 random digits
-- expiration date:  Any future date
 
 ---
 
@@ -54,9 +42,6 @@ npm run test:unit
 ```
 ---
 
-## Security
-Since no database is incorporated in this mock, routers are not checked with navigation guard and success message is stored with local storage.
-
 ## Version Information
   - vue: ^2.6.14
   - Node.js: ^14.17.1
@@ -64,7 +49,6 @@ Since no database is incorporated in this mock, routers are not checked with nav
   - vue-router: ^3.5.2
   - @vue-stripe/vue-stripe: ^4.2.5
   - axios: ^0.21.1
-  - dotenv: ^10.0.0
   - lodash: ^4.17.21
   - bootstrap-vue": "^2.21.2"
   
