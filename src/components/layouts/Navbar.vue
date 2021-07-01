@@ -37,14 +37,10 @@ export default {
   },
   methods: {
     switchLang(){
-      console.log('current lang:', this.$store.state.lang)
       let chosenLang
       if(this.$store.state.usedtxt.lang==='EN'){ chosenLang='zh_CN'
       }else{ chosenLang='en' }
-      console.log('chosen:', chosenLang)
-      
       this.$store.commit('setLang', chosenLang)
-      console.log('change the lang!:', this.$store.state.lang)
       this.$emit('renewSteps', this.$store.state.steps)
     }
   }
