@@ -26,9 +26,10 @@ const router = new Router({
       component: () => 
         import('../views/NameInput.vue') 
     },
+    { path: '/checkout/', redirect: { name: 'NameInput' } },
     { path: '/', redirect: { name: 'NameInput' } },
     { path:'/404', 
-      alias:'/checkout/*', 
+      alias:'/*', 
       name: 'PageNotFound', 
       component: () => 
         import('../views/PageNotFound.vue') }

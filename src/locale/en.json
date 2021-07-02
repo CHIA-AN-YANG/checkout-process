@@ -1,5 +1,6 @@
 { 
-  "lang": "EN",
+  "lang": "EN",  
+  "language": "lang",
   "help": "help",
   "signin": "sign in",
   "firstname": "First Name",
@@ -13,5 +14,8 @@
   "errorCharacter":"Contain invalid characters.",
   "errorBlank":"All slots are required with valid characters only.",
   "confirmMsg":"You will have to re-fill the form. Do you wish to continue?",
-  "authFail":"Authentification Failed."
+  "authFail":"Authentification Failed.",
+  "errHeading":"404 Page Not Found",
+  "errText":">You can start again from ",
+  "errLink":"Here"
 }

@@ -2,12 +2,12 @@
   <nav class="nav__card">
     <ul class="nav__lists row">
       <li class="nav__list nav__list--ayuda">
-        <img src="@/assets/navbar-icons/help-icon.svg" alt="help-icon-img">
+        <img class="nav__img" src="@/assets/navbar-icons/help-icon.svg" alt="help-icon-img">
         <a href="#">{{transHelp}}</a>        
       </li>
 
       <li class="nav__list nav__list--signin">
-        <img src="@/assets/navbar-icons/user-auth.svg" alt="user-auth-img">
+        <img class="nav__img" src="@/assets/navbar-icons/user-auth.svg" alt="user-auth-img">
         <a href="#">{{transSignin}}</a>
       </li>
 
@@ -25,15 +25,14 @@
 <script>
 export default {
   name: "Navbar",
-  props: {
-    msg: String,
-  },
-  data(){return {
-  }},
   computed:{
     currentLang(){ return this.$store.state.usedtxt.lang },
     transHelp(){ return this.$store.state.usedtxt.help },
-    transSignin(){ return this.$store.state.usedtxt.signin }
+    transSignin(){ return this.$store.state.usedtxt.signin },
+    smScreenSize() {
+    if (window.innerWidth <375) { return false
+    } else { return true }
+  }
   },
   methods: {
     switchLang(){
@@ -134,6 +133,9 @@ export default {
     font-size: .8em;
     line-height: 1em;
     padding: 2px 1rem;
+    >img {
+      @include size(13px)
+    }
     &:hover .nav__dropdown-item {
       top: 22px;
       pointer-events: auto;
@@ -169,6 +171,9 @@ export default {
     font-size: .8em;
     line-height: 22px;
     padding: 4px 10px;
+    >img {
+      @include size(13px)
+    }
     &:hover .nav__dropdown-item {
       top: 35px;
       pointer-events: auto;
@@ -176,7 +181,9 @@ export default {
   }  
   }
 }
-
+@media (max-width: 375px) {
+  .nav__img { display: none; }
+};
 @media (min-width: $breakpoint-tablet) and (max-width: $breakpoint-desktop) {
 .nav {
   &__lists{

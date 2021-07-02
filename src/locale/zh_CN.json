@@ -1,5 +1,6 @@
  {
     "lang": "中文",
+    "language": "語言",
     "help": "常見問題",
     "signin": "登入帳戶",
     "firstname": "名字",
@@ -13,5 +14,8 @@
     "errorCharacter":"含有不接受字元。",
     "errorBlank":"所有欄位皆為必填，並不可使用英文字母外的特殊字元或空白",
     "confirmMsg":"回上一步將會需要重新填寫表單，要繼續嗎?",
-    "authFail":"驗證失敗。"
+    "authFail":"驗證失敗。",
+    "errHeading":"404 頁面不存在",
+    "errText":"您可以重新開始：",
+    "errLink":"跳到第一頁"
  }
