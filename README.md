@@ -22,7 +22,8 @@ npm install
 ---
 
 ## Usage 
-Before start this project locally, check if you have installed an SSL certificate for `localhost`. If not, you may get the warning message that the site is not secure.
+
+Before starting this project locally, check if you have installed an SSL certificate for `localhost`. If not, you may get the warning message that the site is not secure.
 To use HTTP for localhost, comment out the HTTPS setting in `vue.config.js` accordingly:
 ```
 //vue.config.js
@@ -53,10 +54,15 @@ npm run test:unit
   - Node.js: ^14.17.1
   - npm: ^6.14.13
   - vue-router: ^3.5.2
+  - vuex: ^3.6.2
   - @vue-stripe/vue-stripe: ^4.2.5
   - axios: ^0.21.1
-  - bootstrap-vue": "^2.21.2"
+  - bootstrap-vue": ^2.21.2
+  - webpack: ^4.46.0  *Please note that, using webpack 5 may cause this project to crash*
+  - terser-webpack-plugin: ^4.2.3
+  - postcss: ^2.2.6,
+  - postcss-loader: ^2.1.6,
   
 ## Contributing
-Drop me an email, leave a comment, or make pull request if you have any suggestions for improvement. I would greatly appreciate it!
+Drop me an email, leave a comment, or make a pull request if you have any suggestion for improvement. I would greatly appreciate it!
 My email address is: chiaan.y.creativeworker@gmail.com
