@@ -22,7 +22,6 @@
         <div class="form-group">
           <label for="name">{{$store.state.usedtxt.firstname}}</label>
           <input
-            @keydown="checkValid"
             class="form-control" 
             type="text" 
             name="firstname" 
@@ -35,7 +34,6 @@
         <div class="form-group">
           <label for="lastname">{{$store.state.usedtxt.lastname}}</label>
           <input
-            @keydown="checkValid" 
             class="form-control" 
             type="text" 
             name="lastname" 
@@ -75,6 +73,10 @@ export default {
       valid: false,
       proceedText: 'Pay'
     }
+  },
+  watch: {
+    firstname(){this.checkValid()},
+    lastname(){this.checkValid()}
   },
   computed: {
     transContinue(){return this.$store.state.usedtxt.continue}
@@ -136,15 +138,22 @@ export default {
   text-align: left;
   opacity: .9;
   z-index: 50;
+  list-style-type: disc;
 };
+.msg__li{ 
+  list-style-type: disc;
+  text-indent: -1.5em;
+  margin-left: 1em;
+  }
 @media (max-width: $breakpoint-phone) {
-  .msg__card { width: 90vw;}
+  .msg__card { 
+    width: 90vw;
+    }
 };
 @media (min-width: $breakpoint-phone) and (max-width: $breakpoint-tablet) 
 {
   .msg__card { width: 90vw;}
 }
-.msg__li{ list-style-type: disc;}
 form {
   margin: 9vh auto 0;
   padding-top: 1vh;

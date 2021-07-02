@@ -21,7 +21,13 @@
 </template>
 
 <script>
-import _ from 'lodash'
+//Can be replaced with lodash if more lodash functions are on demand.
+const debounce = (callback, wait) => {
+  let timeoutId = null
+  return (...args) => {
+    window.clearTimeout(timeoutId)
+    timeoutId = window.setTimeout(() => {
+      callback.apply(null, args) }, wait)}}
 export default ({
 props: {
     pageId: { type:Number, required:true, default:null },
@@ -37,7 +43,7 @@ props: {
     }
   },
 watch:{
-    // decide whether to shoe prev/next btn according to page progress
+  // decide whether to show prev/next btn according to page progress
   pageId: {
     handler:function(val){
       if(val===1){                    
@@ -55,8 +61,8 @@ watch:{
     }
   },
   created() {
-    this.debouncedNext = _.debounce(this.getNextRoute, 500)
-    this.debouncedPrev = _.debounce(this.getPrevRoute, 500)
+    this.debouncedNext = debounce(this.getNextRoute, 500)
+    this.debouncedPrev = debounce(this.getPrevRoute, 500)
   },
 methods: {
   //go to prev/next page along with actions taken
@@ -82,7 +88,7 @@ methods: {
         this.$router.push({name:this.prevPage})
         return
       }else{ return }}
-    }
+    }  
 })
 </script>
 
@@ -149,5 +155,37 @@ methods: {
     }
   }
 }
-
+@media (max-width: 375px) and (orientation: portrait)
+{
+  .btn--holder {
+    @include size(200px, 100%);
+    padding: .8em .6em 20px;
+    flex-wrap: wrap;
+    .btn--next,.btn--prev {
+      margin-top: .8em;
+      flex: 0 0 100%;
+      >svg { 
+        @include size(1.6em); 
+      }
+    }
+    .btn--prev {
+      @include blue-outline-style;
+      text-align: left;
+      justify-content: flex-start;
+      >* {flex: 0 0 1}
+      >svg { 
+        margin-right: .2em; 
+        transform: rotate(180deg);
+      }
+    }
+    .btn--next {
+      @include blue-solid-style;
+      text-align: right;
+      justify-content: flex-end;
+      >* {flex: 0 0 1}
+      >svg { 
+        margin-left: .2em; }
+    }
+  }
+} 
 </style>
