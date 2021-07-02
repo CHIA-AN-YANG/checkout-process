@@ -22,6 +22,12 @@ npm install
 ---
 
 ## Usage 
+Before start this project locally, check if you have installed an SSL certificate for `localhost`. If not, you may get the warning message that the site is not secure.
+To use HTTP for localhost, comment out the HTTPS setting in `vue.config.js` accordingly:
+```
+//vue.config.js
+//module.exports = { devServer: { https: true } }
+```
 ### 1. Compile and minify for production
 Since webpack comes with Vue-cli and does the minification, it does not require external task runners.
 ```
