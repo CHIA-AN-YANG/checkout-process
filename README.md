@@ -55,7 +55,6 @@ npm run test:unit
   - vue-router: ^3.5.2
   - @vue-stripe/vue-stripe: ^4.2.5
   - axios: ^0.21.1
-  - lodash: ^4.17.21
   - bootstrap-vue": "^2.21.2"
   
 ## Contributing
